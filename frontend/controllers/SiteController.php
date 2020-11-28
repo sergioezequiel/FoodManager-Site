@@ -28,4 +28,16 @@ class SiteController extends Controller
     public function actionAboutus() {
         return $this->render('aboutus');
     }
+
+    public function actionFaq() {
+        return $this->render('faq');
+    }
+
+    public function actionContactus() {
+        return $this->render('contactus');
+    }
+
+    public function actionLogin() {
+        return $this->render('login');
+    }
 }
