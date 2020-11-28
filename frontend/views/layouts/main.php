@@ -33,7 +33,7 @@ FoodmanAsset::register($this);
             <div class="collapse navbar-collapse"
                  id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><?= Html::a('Home', 'site/index', ['class' => 'nav-link']) ?></li>
                     <li class="nav-item"><?= Html::a('About us', 'site/aboutus', ['class' => 'nav-link']) ?></li>
                     <li class="nav-item"><a class="nav-link" href="faq.html">faQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
@@ -43,13 +43,13 @@ FoodmanAsset::register($this);
         </div>
     </nav>
 
-   // <div class="container">
+
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
-    </div>
+    
 </div>
 
 <footer class="page-footer dark">
