@@ -15,11 +15,11 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
+   /* public function behaviors()
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::className('user'),
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
@@ -39,7 +39,7 @@ class SiteController extends Controller
                 ],
             ],
         ];
-    }
+    }*/
 
     /**
      * {@inheritdoc}
@@ -68,10 +68,10 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionLogin()
+   public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->goHome('index.php');
         }
 
         $this->layout = 'blank';
