@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Url;
+
 $assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>
@@ -23,7 +25,9 @@ $this->title = 'FoodManager';
                                 class="form-check-label" for="checkbox">Remember me</label></div>
                 </div>
                 <button class="btn btn-primary btn-block" type="submit">Log In</button>
+                <a class="btn btn-primary btn-block" href="<?=Url::toRoute('site/signup');?>">Criar conta</a>
             </form>
+
         </div>
     </section>
 </main>

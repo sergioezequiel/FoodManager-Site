@@ -209,4 +209,16 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    public function getStatus() {
+        if ($this->status == '10') {
+            return 'Ativo';
+        }
+        else if ($this->status == '9') {
+            return 'Inativo';
+        }
+        else if ($this->status == '0') {
+            return 'Eliminado';
+        }
+    }
 }

@@ -29,7 +29,7 @@ $this->title = 'FoodManager';
                         <div class="card-body info">
                             <h4 class="card-title">Alexandre Bértolo</h4>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href='https://www.instagram.com/alexscorpion100/'?>><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                            <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href='https://www.instagram.com/alexscorpion100/'?><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
                         </div>
                     </div>
                 </div>
