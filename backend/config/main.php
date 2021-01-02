@@ -10,7 +10,7 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'gii'],
     'modules' => [
         'api' => [
             'class' => 'app\modules\api\Module'
@@ -19,6 +19,9 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -49,11 +52,29 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/codigosbarras',
-                    'pluralize' => 'false'
-                ]
+                    'pluralize' => 'false',
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/produto',
+                    'pluralize' => 'false',
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/user',
+                    'pluralize' => 'false',
+                    'only' => ['login'],
+                    'extraPatterns' => ['POST login' => 'login',]
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/itensdespensa',
+                    'pluralize' => 'false',
+                    'extraPatterns' => ['GET despensa' => 'despensa'],
+
+                ],
             ],
         ],
-
     ],
     'params' => $params,
 ];
