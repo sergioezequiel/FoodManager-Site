@@ -70,7 +70,7 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/itensdespensa',
                     'pluralize' => 'false',
-                    'extraPatterns' => ['GET despensa' => 'despensa'],
+                    'extraPatterns' => ['GET despensa' => 'despensa', 'POST adicionaritem' => 'adicionaritem'],
 
                 ],
             ],
