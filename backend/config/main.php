@@ -75,6 +75,17 @@ return [
                     'pluralize' => false,
                     'extraPatterns' => ['GET despensa' => 'despensa', 'POST adicionaritem' => 'adicionaritem', 'GET count/<apikey:\w+>' => 'count'],
                 ],
+                [
+                    'class' => UrlRule::class,
+                    'controller' => ['api/ingredientes'],
+                    'pluralize' => false,
+                    'extraPatterns' =>
+                        [
+                            'GET containingredientes/<apikey:\w+>' => 'containingredientes',
+                            'GET receitadispo/<apikey:\w+>' => 'receitadispo',
+                            'GET ingredientesemfalta/<apikey:\w+>' => 'ingredientesemfalta'
+                        ],
+                ],
             ],
         ],
     ],
