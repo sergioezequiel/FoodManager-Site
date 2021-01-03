@@ -55,17 +55,17 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/codigosbarras',
-                    'pluralize' => 'false',
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/produto',
-                    'pluralize' => 'false',
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/user',
-                    'pluralize' => 'false',
+                    'pluralize' => false,
                     'only' => ['login'],
                     'extraPatterns' => ['POST login' => 'login',]
                 ],
@@ -73,7 +73,7 @@ return [
                     'class' => UrlRule::class,
                     'controller' => ['api/itensdespensa'],
                     'pluralize' => false,
-                    'extraPatterns' => ['GET despensa' => 'despensa', 'POST adicionaritem' => 'adicionaritem'],
+                    'extraPatterns' => ['GET despensa' => 'despensa', 'POST adicionaritem' => 'adicionaritem', 'GET count/<apikey:\w+>' => 'count'],
                 ],
             ],
         ],
