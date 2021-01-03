@@ -1,4 +1,7 @@
 <?php
+
+use yii\rest\UrlRule;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -67,11 +70,10 @@ return [
                     'extraPatterns' => ['POST login' => 'login',]
                 ],
                 [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/itensdespensa',
-                    'pluralize' => 'false',
+                    'class' => UrlRule::class,
+                    'controller' => ['api/itensdespensa'],
+                    'pluralize' => false,
                     'extraPatterns' => ['GET despensa' => 'despensa', 'POST adicionaritem' => 'adicionaritem'],
-
                 ],
             ],
         ],
