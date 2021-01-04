@@ -73,7 +73,7 @@ return [
                     'class' => UrlRule::class,
                     'controller' => ['api/itensdespensa'],
                     'pluralize' => false,
-                    'extraPatterns' => ['GET despensa' => 'despensa', 'POST adicionaritem' => 'adicionaritem', 'GET count/<apikey:\w+>' => 'count'],
+                    'extraPatterns' => ['GET despensa/<apikey:\w+>' => 'despensa', 'POST adicionaritem' => 'adicionaritem', 'GET count/<apikey:\w+>' => 'count'],
                 ],
                 [
                     'class' => UrlRule::class,
@@ -90,6 +90,16 @@ return [
                     'class' => UrlRule::class,
                     'controller' => 'api/receitas',
                     'pluralize' => false,
+                ],
+                [
+                    'class' => UrlRule::class,
+                    'controller' => 'api/feedback',
+                    'pluralize' => false,
+                    'extraPatterns' => [
+                        'GET utilizador/<apikey:\w+>' => 'utilizador',
+                        'GET tipos/<apikey:\w+>' => 'tipos',
+                        'GET tiposglobais/<apikey:\w+>' => 'tiposglobais',
+                    ]
                 ],
             ],
         ],
