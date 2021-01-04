@@ -19,9 +19,10 @@ class Module extends \yii\base\Module
      */
     public function init()
     {
+        Yii::$app->user->enableSession = false;
         parent::init();
 
-        Yii::$app->user->enableSession = false;
+
         // custom initialization code goes here
     }
 }

@@ -86,6 +86,11 @@ return [
                             'GET ingredientesemfalta/<apikey:\w+>' => 'ingredientesemfalta'
                         ],
                 ],
+                [
+                    'class' => UrlRule::class,
+                    'controller' => 'api/receitas',
+                    'pluralize' => false,
+                ],
             ],
         ],
     ],

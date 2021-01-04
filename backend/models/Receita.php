@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Bluerhinos\phpMQTT;
+use common\models\User;
 use Yii;
 
 /**
@@ -74,5 +76,27 @@ class Receita extends \yii\db\ActiveRecord
     public function getIdutilizador0()
     {
         return $this->hasOne(User::className(), ['id' => 'idutilizador']);
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        $nome = $this->nome;
+
+        $this->publishMosquittto("geral", "Nova receita adicionada! ".$nome);
+    }
+
+    public function publishMosquittto($canal, $msg) {
+        $server = "127.0.0.1";
+        $port = 1883;
+        $username = "";
+        $password = "";
+        $client_id = "akwduaiwidawhihawifiau";
+        $mqtt = new phpMQTT($server, $port, $client_id);
+        if($mqtt->connect(true, null, $username, $password)) {
+            $mqtt->publish($canal, $msg, 0);
+            $mqtt->close();
+        }
     }
 }
