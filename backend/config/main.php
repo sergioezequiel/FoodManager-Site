@@ -1,4 +1,7 @@
 <?php
+
+use yii\rest\UrlRule;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -52,26 +55,51 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/codigosbarras',
-                    'pluralize' => 'false',
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/produto',
-                    'pluralize' => 'false',
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/user',
-                    'pluralize' => 'false',
+                    'pluralize' => false,
                     'only' => ['login'],
                     'extraPatterns' => ['POST login' => 'login',]
                 ],
                 [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/itensdespensa',
-                    'pluralize' => 'false',
-                    'extraPatterns' => ['GET despensa' => 'despensa'],
-
+                    'class' => UrlRule::class,
+                    'controller' => ['api/itensdespensa'],
+                    'pluralize' => false,
+                    'extraPatterns' => ['GET despensa/<apikey:\w+>' => 'despensa', 'POST adicionaritem' => 'adicionaritem', 'GET count/<apikey:\w+>' => 'count'],
+                ],
+                [
+                    'class' => UrlRule::class,
+                    'controller' => ['api/ingredientes'],
+                    'pluralize' => false,
+                    'extraPatterns' =>
+                        [
+                            'GET containingredientes/<apikey:\w+>' => 'containingredientes',
+                            'GET receitadispo/<apikey:\w+>' => 'receitadispo',
+                            'GET ingredientesemfalta/<apikey:\w+>' => 'ingredientesemfalta'
+                        ],
+                ],
+                [
+                    'class' => UrlRule::class,
+                    'controller' => 'api/receitas',
+                    'pluralize' => false,
+                ],
+                [
+                    'class' => UrlRule::class,
+                    'controller' => 'api/feedback',
+                    'pluralize' => false,
+                    'extraPatterns' => [
+                        'GET utilizador/<apikey:\w+>' => 'utilizador',
+                        'GET tipos/<apikey:\w+>' => 'tipos',
+                        'GET tiposglobais/<apikey:\w+>' => 'tiposglobais',
+                    ]
                 ],
             ],
         ],
