@@ -5,12 +5,15 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "CodigosBarras".
+ * This is the model class for table "codigosbarras".
  *
  * @property int $codigobarras
  * @property string $nome
  * @property string $marca
+ * @property float $quantidade
  * @property int $idproduto
+ *
+ * @property Produtos $idproduto0
  */
 class CodigoBarras extends \yii\db\ActiveRecord
 {
@@ -19,7 +22,7 @@ class CodigoBarras extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'CodigosBarras';
+        return 'codigosbarras';
     }
 
     /**
@@ -28,11 +31,12 @@ class CodigoBarras extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['codigobarras', 'nome', 'marca', 'idproduto'], 'required'],
+            [['codigobarras', 'nome', 'marca', 'quantidade', 'idproduto'], 'required'],
             [['codigobarras', 'idproduto'], 'integer'],
+            [['quantidade'], 'number'],
             [['nome', 'marca'], 'string', 'max' => 45],
             [['codigobarras'], 'unique'],
-            [['idproduto'], 'exist', 'skipOnError' => true, 'targetClass' => Produtos::className(), 'targetAttribute' => ['idproduto' => 'idproduto']],
+            [['idproduto'], 'exist', 'skipOnError' => true, 'targetClass' => Produto::className(), 'targetAttribute' => ['idproduto' => 'idproduto']],
         ];
     }
 
@@ -45,7 +49,18 @@ class CodigoBarras extends \yii\db\ActiveRecord
             'codigobarras' => 'Codigobarras',
             'nome' => 'Nome',
             'marca' => 'Marca',
+            'quantidade' => 'Quantidade',
             'idproduto' => 'Idproduto',
         ];
+    }
+
+    /**
+     * Gets query for [[Idproduto0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdproduto0()
+    {
+        return $this->hasOne(Produtos::className(), ['idproduto' => 'idproduto']);
     }
 }
