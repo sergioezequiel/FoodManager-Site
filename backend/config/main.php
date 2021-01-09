@@ -13,7 +13,7 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log', 'gii'],
+    'bootstrap' => ['log'],
     'modules' => [
         'api' => [
             'class' => 'app\modules\api\Module'
