@@ -1,6 +1,5 @@
 <?php namespace backend\tests;
 
-use app\models\Produto;
 use app\models\Receita;
 use app\models\User;
 use Codeception\Test\Unit;
@@ -62,10 +61,10 @@ class ReceitasTest extends Unit
         $receita = $this->addReceita();
         $receita->save();
 
-        $this->tester->seeRecord(Produto::class, ['idreceita' => '99']);
+        $this->tester->seeRecord(Receita::class, ['idreceita' => '99']);
         $receita->delete();
 
-        $this->tester->dontSeeRecord(Produto::class, ['idproduto' => '99']);
+        $this->tester->dontSeeRecord(Receita::class, ['idreceita' => '99']);
 
     }
 
@@ -87,6 +86,6 @@ class ReceitasTest extends Unit
         $receita->passos = 'Alguns passos para a receita';
         $receita->idutilizador = 99;
         $this->assertFalse($receita->save());
-        $this->tester->dontSeeRecord(Produto::class, ['idproduto' => '99']);
+        $this->tester->dontSeeRecord(Receita::class, ['idreceita' => '99']);
     }
 }

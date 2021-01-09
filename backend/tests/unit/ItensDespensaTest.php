@@ -50,6 +50,21 @@ class ItensDespensaTest extends \Codeception\Test\Unit
     }
 
     // tests
+
+    public function testBadItemDespensa()
+    {
+        $itemDespensa = new ItemDespensa();
+        $itemDespensa->iditemdespensa = 999;
+        $itemDespensa->nome = 9552;
+        $itemDespensa->quantidade = 500;
+        $itemDespensa->validade = '2021/01/25';
+        $itemDespensa->idproduto = 'asdasd';
+        $itemDespensa->idutilizador = 99;
+
+        $this->assertFalse($itemDespensa->save());
+        $this->tester->dontseeRecord(ItemDespensa::class, ['iditemdespensa' => 999]);
+    }
+
     public function testAddItemDespensa()
     {
         $itemDespensa = $this->addItemDespensa();

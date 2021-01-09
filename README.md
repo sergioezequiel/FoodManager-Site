@@ -89,6 +89,7 @@ environments/            contains environment-based overrides
 
 ------------- terminal 1 --------------
 1. yii serve --docroot="@backend/web/"
+2  yii serve --docroot="@frontend/web/"
 
 ------------- terminal 2 --------------
 1. java -Dwebdriver.chrome.driver=./chromedriver.exe -jar selenium-server-standalone-3.141.59.jar
