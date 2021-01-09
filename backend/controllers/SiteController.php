@@ -19,7 +19,7 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className('user'),
+                'class' => AccessControl::className(),
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
@@ -35,7 +35,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -71,7 +71,7 @@ class SiteController extends Controller
    public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome('index.php');
+            return $this->goHome();
         }
 
         $this->layout = 'blank';

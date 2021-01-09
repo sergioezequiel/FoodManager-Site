@@ -19,7 +19,8 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-bootstrap4": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "bluerhinos/phpmqtt": "@dev"
+        "bluerhinos/phpmqtt": "@dev",
+        "rmrevin/yii2-fontawesome": "~3.5"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

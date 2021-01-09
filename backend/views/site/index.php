@@ -4,7 +4,7 @@
 
 use yii\helpers\Url;
 
-$assets = \backend\assets\AppAsset::register($this);
+$assets = \backend\assets\SbadminAsset::register($this);
 $this->title = 'FoodManager';
 ?>
 
