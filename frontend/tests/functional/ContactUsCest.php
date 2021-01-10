@@ -1,30 +1,29 @@
 <?php namespace frontend\tests\functional;
-
+use common\fixtures\FeedbackFixture;
+use common\fixtures\UserFixture;
 use frontend\tests\FunctionalTester;
-use yii\helpers\Url;
+use app\models\Feedback;
+use frontend\controllers\SiteController;
 
 class ContactUsCest
 {
     public function _before(FunctionalTester $I)
     {
-        $I->amOnPage(Url::toRoute('/site/contactus'));
+        $I->amOnPage('/site/contactus');
     }
 
-    protected function formParams($nome, $subjet, $email, $message)
+    protected function formParams($login, $password)
     {
         return [
-            'ContactUsForm[nome]' => $nome,
-            'ContactUsForm[subjet]' => $subjet,
-            'ContactUsForm[email]' => $email,
-            'ContactUsForm[message]' => $message,
+            'ContactUsForm[nome]' => $login,
+            'ContactUsForm[n]' => $password,
         ];
+
     }
 
     // tests
-    public function checkValidSubmit(FunctionalTester $I)
+    public function tryToTest(FunctionalTester $I)
     {
-        $I->submitForm('#send', $this->formParams('erau', 'password_0', 'exemplo@gmail.com','Isto é uma mensagem de teste para a picanha'));
 
     }
-
 }

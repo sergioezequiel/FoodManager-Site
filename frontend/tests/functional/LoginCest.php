@@ -12,18 +12,21 @@ class LoginCest
     }
 
 // tests
-    protected function formParams($login, $password)
+    protected function formParams($email, $password)
     {
         return [
-            'LoginForm[username]' => $login,
-            'LoginForm[password]' => $password,
+            'User[email]' => $email,
+            'User[password]' => $password,
         ];
     }
 
     public function checkEmpty(FunctionalTester $I)
     {
-        $I->submitForm('#login', $this->formParams('asd@asd.com', ''));
-        //$I->see('Please fill out this field.');
+        $I->fillField('#login input[name="User[email]"]', '');
+        $I->fillField('#login input[name=password]', '123456789');
+        $I->click('Log In', '#login');
+        //$I->submitForm('#login', $this->formParams('', ''));
+        $I->seeValidationError('Email cannot be blank.');
     }
 
     public function checkWrongPassword(FunctionalTester $I)
