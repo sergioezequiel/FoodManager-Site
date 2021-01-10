@@ -29,10 +29,10 @@ class LoginCest
         $I->amOnRoute('site/login');
     }
 
-    protected function formParams($login, $password)
+    protected function formParams($email, $password)
     {
         return [
-            'LoginForm[username]' => $login,
+            'LoginForm[email]' => $email,
             'LoginForm[password]' => $password,
         ];
     }

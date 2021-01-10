@@ -84,6 +84,7 @@ environments/            contains environment-based overrides
 ------------- gerar testes unitarios --------------
 1. (cd backend / cd frontend) 
 2. ..\vendor\bin\codecept generate:test unit UserTest
+3. ..\\vendor\\bin\\codecept generate:cest functional  LoginCest
 
 ------------------------------------- FINAL -------------------------------------
 
