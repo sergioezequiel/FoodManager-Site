@@ -2,7 +2,13 @@
 
 /* @var $this yii\web\View */
 
-$assets = \frontend\assets\FoodmanAsset::register($this);
+/* @var $model \app\models\User */
+
+use frontend\assets\FoodmanAsset;
+use yii\bootstrap4\ActiveForm;
+use yii\bootstrap4\Html;
+
+$assets = FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>
 <main class="page login-page">
@@ -12,23 +18,24 @@ $this->title = 'FoodManager';
                 <h2 class="text-info">Log In</h2>
                 <p>Faça o seu login:</p>
             </div>
-            <form id="login">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input class="form-control item" type="email"id="email" name="email" required title="This field should not be left blank." >
+            <?php $form = ActiveForm::begin(['id' => 'login']); ?>
+            <div class="form-group">
+                <?= $form->field($model, 'email')->input('email', ['id' => 'email', 'className' => 'form-control']) ?>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkbox" name="remember">
+                    <label class="form-check-label" for="checkbox">Remember me</label>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input class="form-control" type="password" id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkbox" name="remember">
-                        <label class="form-check-label" for="checkbox">Remember me</label>
-                    </div>
-                </div>
-                <button class="btn btn-primary btn-block" type="submit">Log In</button>
-            </form>
+            </div>
+            <div class="form-group">
+                <?= Html::submitButton('Log In', ['class' => 'btn btn-primary btn-block', 'name' => 'contact-button']) ?>
+            </div>
+            <?php ActiveForm::end(); ?>
         </div>
     </section>
 </main>

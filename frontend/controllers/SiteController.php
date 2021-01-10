@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Feedback;
+use app\models\User;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -34,10 +36,15 @@ class SiteController extends Controller
     }
 
     public function actionContactus() {
+
         return $this->render('contactus');
     }
 
     public function actionLogin() {
-        return $this->render('login');
+        $model = new User();
+
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 }

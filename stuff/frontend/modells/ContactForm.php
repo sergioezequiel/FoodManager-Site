@@ -1,10 +1,7 @@
 <?php
-
 namespace frontend\models;
-
 use Yii;
 use yii\base\Model;
-
 /**
  * ContactForm is the model behind the contact form.
  */
@@ -15,8 +12,6 @@ class ContactForm extends Model
     public $subject;
     public $body;
     public $verifyCode;
-
-
     /**
      * {@inheritdoc}
      */
@@ -31,7 +26,6 @@ class ContactForm extends Model
             ['verifyCode', 'captcha'],
         ];
     }
-
     /**
      * {@inheritdoc}
      */
@@ -41,7 +35,6 @@ class ContactForm extends Model
             'verifyCode' => 'Verification Code',
         ];
     }
-
     /**
      * Sends an email to the specified email address using the information collected by this model.
      *
