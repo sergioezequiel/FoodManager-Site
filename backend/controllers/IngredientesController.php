@@ -3,17 +3,17 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\CodigoBarras;
-use yii\data\ActiveDataProvider;
+use app\models\Ingrediente;
+use app\models\IngredienteSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CodigosbarrasController implements the CRUD actions for CodigoBarras model.
+ * IngredientesController implements the CRUD actions for Ingrediente model.
  */
-class CodigosbarrasController extends Controller
+class IngredientesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -27,7 +27,7 @@ class CodigosbarrasController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['index','delete','create','update','view'],
-                        'roles' => ['gestor', 'admin']
+                        'roles' => ['editor', 'admin']
                     ],
                 ]
             ],
@@ -55,22 +55,22 @@ class CodigosbarrasController extends Controller
     }
 
     /**
-     * Lists all CodigoBarras models.
+     * Lists all Ingrediente models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => CodigoBarras::find(),
-        ]);
+        $searchModel = new IngredienteSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single CodigoBarras model.
+     * Displays a single Ingrediente model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -83,16 +83,16 @@ class CodigosbarrasController extends Controller
     }
 
     /**
-     * Creates a new CodigoBarras model.
+     * Creates a new Ingrediente model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CodigoBarras();
+        $model = new Ingrediente();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->codigobarras]);
+            return $this->redirect(['view', 'id' => $model->idingrediente]);
         }
 
         return $this->render('create', [
@@ -101,7 +101,7 @@ class CodigosbarrasController extends Controller
     }
 
     /**
-     * Updates an existing CodigoBarras model.
+     * Updates an existing Ingrediente model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -112,7 +112,7 @@ class CodigosbarrasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->codigobarras]);
+            return $this->redirect(['view', 'id' => $model->idingrediente]);
         }
 
         return $this->render('update', [
@@ -121,7 +121,7 @@ class CodigosbarrasController extends Controller
     }
 
     /**
-     * Deletes an existing CodigoBarras model.
+     * Deletes an existing Ingrediente model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -135,15 +135,15 @@ class CodigosbarrasController extends Controller
     }
 
     /**
-     * Finds the CodigoBarras model based on its primary key value.
+     * Finds the Ingrediente model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CodigoBarras the loaded model
+     * @return Ingrediente the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CodigoBarras::findOne($id)) !== null) {
+        if (($model = Ingrediente::findOne($id)) !== null) {
             return $model;
         }
 

@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use app\models\Feedback;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +21,16 @@ class FeedbackController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index','delete','create','update','view'],
+                        'roles' => ['gestor', 'moderador', 'admin']
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -27,6 +38,20 @@ class FeedbackController extends Controller
                 ],
             ],
         ];
+    }
+
+    public function beforeAction($action)
+    {
+        // Para mostrar com o layout vazio caso o utilizador não tiver o login feito, porque se não mostrava o layout do backoffice
+        if ($action->id == 'error' && Yii::$app->user->isGuest) {
+            $this->layout = 'blank';
+            return parent::beforeAction($action);
+        }
+
+        $user = \common\models\User::find()->andWhere(Yii::$app->user->id)->one();
+        $this->view->params['username'] = $user->username;
+
+        return parent::beforeAction($action);
     }
 
     /**

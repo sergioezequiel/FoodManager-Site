@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ReceitaSearch */
+/* @var $searchModel app\models\IngredienteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Receitas';
+$this->title = 'Ingredientes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="receita-index">
+<div class="ingrediente-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Receita', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Ingrediente', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,17 +26,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            'idingrediente',
             'nome',
-            [
-                'label' => 'Duração da Receita',
-                'attribute' => 'duracaoreceita'
-            ],
-            [
-                'label' => 'Duração da Preparação',
-                'attribute' => 'duracaopreparacao'
-            ],
-            'passos:ntext',
-            //'idutilizador',
+            'quantnecessaria',
+            'tipopreparacao',
+            'idproduto',
+            //'idreceita',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

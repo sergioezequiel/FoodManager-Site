@@ -6,6 +6,8 @@ use Yii;
 use common\models\User;
 use common\models\UserSearch;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
+use yii\rbac\Role;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -27,18 +29,34 @@ class UserController extends Controller
                     'delete' => ['POST'],
 
                 ],
-                ],
+            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','delete','create','update','view'],
+                        'actions' => ['index','delete','create','update','view', 'permissions'],
                         'allow' => true,
                         'roles' => ['admin', 'moderador'],
                     ],
                 ],
             ],
         ];
+    }
+
+    public function beforeAction($action)
+    {
+        // Para mostrar com o layout vazio caso o utilizador não tiver o login feito, porque se não mostrava o layout do backoffice
+        if ($action->id == 'error' && Yii::$app->user->isGuest) {
+            $this->layout = 'blank';
+            return parent::beforeAction($action);
+        }
+
+        Yii::$app->assetManager->forceCopy = true;
+
+        $user = \common\models\User::find()->andWhere(Yii::$app->user->id)->one();
+        $this->view->params['username'] = $user->username;
+
+        return parent::beforeAction($action);
     }
 
     /**
@@ -117,10 +135,16 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
-       $model =  $this->findModel($id);
+        $model = $this->findModel($id);
         $model->status = '0';
         $model->save();
         return $this->redirect(['index']);
+    }
+
+    public function actionPermissions($id) {
+        $model = $this->findModel($id);
+
+        return $this->render('permissions', ['model' => $model]);
     }
 
     /**

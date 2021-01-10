@@ -1,7 +1,9 @@
 <?php
 
+use yii\bootstrap4\Modal;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\UserSearch */
@@ -9,6 +11,8 @@ use yii\grid\GridView;
 
 $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
+
+Yii::$app->assetManager->forceCopy = true;
 ?>
 <div class="user-index">
 
@@ -36,7 +40,15 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             //'verification_token',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete} {permissions}',
+                'buttons' => [
+                    'permissions' => function($url, $model, $key) {
+                        return Html::a('', '#', ['class' => 'fas fa-user-check', 'onclick' => 'alertPermissions()']);
+                    }
+                ]
+            ],
         ],
     ]); ?>
 

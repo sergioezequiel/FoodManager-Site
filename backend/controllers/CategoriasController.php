@@ -26,14 +26,9 @@ class CategoriasController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index'],
-                        'roles' => ['gestor']
+                        'actions' => ['index','delete','create','update','view'],
+                        'roles' => ['gestor', 'admin']
                     ],
-                    [
-                        'allow' => false,
-                        'actions' => ['index'],
-                        'roles' => ['editor']
-                    ]
                 ]
             ],
             'verbs' => [
@@ -43,6 +38,20 @@ class CategoriasController extends Controller
                 ],
             ],
         ];
+    }
+
+    public function beforeAction($action)
+    {
+        // Para mostrar com o layout vazio caso o utilizador não tiver o login feito, porque se não mostrava o layout do backoffice
+        if ($action->id == 'error' && Yii::$app->user->isGuest) {
+            $this->layout = 'blank';
+            return parent::beforeAction($action);
+        }
+
+        $user = \common\models\User::find()->andWhere(Yii::$app->user->id)->one();
+        $this->view->params['username'] = $user->username;
+
+        return parent::beforeAction($action);
     }
 
     /**

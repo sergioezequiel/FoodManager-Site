@@ -3,13 +3,10 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\widgets\Breadcrumbs;
+use yii\bootstrap4\Breadcrumbs;
 use common\widgets\Alert;
-use backend\assets\AppAsset;
 
 \backend\assets\SbadminAsset::register($this);
 ?>
@@ -56,14 +53,19 @@ use backend\assets\AppAsset;
                             Início
                         </a>
                         <div class="sb-sidenav-menu-heading">Gestão</div>
+                        <?php if(Yii::$app->user->can('moderador') || Yii::$app->user->can('admin')) { ?>
                         <a class="nav-link" href="<?= Url::toRoute('user/index') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                             Utilizadores
                         </a>
+                        <?php } ?>
+                        <?php if(Yii::$app->user->can('editor') || Yii::$app->user->can('admin')) { ?>
                         <a class="nav-link" href="<?= Url::toRoute('receitas/index') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Receitas
                         </a>
+                        <?php } ?>
+                        <?php if(Yii::$app->user->can('gestor') || Yii::$app->user->can('admin')) { ?>
                         <a class="nav-link" href="<?= Url::toRoute('categorias/index') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Categorias
@@ -76,6 +78,8 @@ use backend\assets\AppAsset;
                             <div class="sb-nav-link-icon"><i class="fas fa-barcode"></i></div>
                             Códigos Barras
                         </a>
+                        <?php } ?>
+                        <?php if(Yii::$app->user->can('moderador') || Yii::$app->user->can('gestor') || Yii::$app->user->can('admin')) { ?>
                         <a class="nav-link" href="<?= Url::toRoute('itensdespensa/index') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-archive"></i></div>
                             Despensa (utilizadores)
@@ -84,11 +88,12 @@ use backend\assets\AppAsset;
                             <div class="sb-nav-link-icon"><i class="fas fa-comment-dots"></i></div>
                             Feedback
                         </a>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    <div class="small">Login feito como:</div>
+                    <?= isset($this->params['username']) ? $this->params['username'] : 'SEM LOGIN EFETUADO' ?>
                 </div>
             </nav>
         </div>

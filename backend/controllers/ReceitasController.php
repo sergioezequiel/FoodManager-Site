@@ -4,7 +4,8 @@ namespace backend\controllers;
 
 use Yii;
 use app\models\Receita;
-use yii\data\ActiveDataProvider;
+use app\models\ReceitaSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +21,16 @@ class ReceitasController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index','delete','create','update','view'],
+                        'roles' => ['editor', 'admin']
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -29,17 +40,31 @@ class ReceitasController extends Controller
         ];
     }
 
+    public function beforeAction($action)
+    {
+        // Para mostrar com o layout vazio caso o utilizador não tiver o login feito, porque se não mostrava o layout do backoffice
+        if ($action->id == 'error' && Yii::$app->user->isGuest) {
+            $this->layout = 'blank';
+            return parent::beforeAction($action);
+        }
+
+        $user = \common\models\User::find()->andWhere(Yii::$app->user->id)->one();
+        $this->view->params['username'] = $user->username;
+
+        return parent::beforeAction($action);
+    }
+
     /**
      * Lists all Receita models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Receita::find(),
-        ]);
+        $searchModel = new ReceitaSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
