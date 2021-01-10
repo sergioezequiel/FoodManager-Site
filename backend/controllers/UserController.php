@@ -51,8 +51,6 @@ class UserController extends Controller
             return parent::beforeAction($action);
         }
 
-        Yii::$app->assetManager->forceCopy = true;
-
         $user = \common\models\User::find()->andWhere(Yii::$app->user->id)->one();
         $this->view->params['username'] = $user->username;
 
@@ -141,10 +139,35 @@ class UserController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionPermissions($id) {
+    public function actionPermissions($id, $permission) {
         $model = $this->findModel($id);
 
-        return $this->render('permissions', ['model' => $model]);
+        $auth = Yii::$app->authManager;
+        foreach ($auth->getRoles() as $role) {
+            if($auth->checkAccess($id, $role->name)) {
+                $auth->revoke($role, $id);
+            }
+        }
+
+        switch ($permission) {
+            case 0:
+                $auth->assign($auth->getRole('admin'), $id);
+                break;
+            case 1:
+                $auth->assign($auth->getRole('gestor'), $id);
+                break;
+            case 2:
+                $auth->assign($auth->getRole('moderador'), $id);
+                break;
+            case 3:
+                $auth->assign($auth->getRole('editor'), $id);
+                break;
+            case 4:
+                $auth->assign($auth->getRole('user'), $id);
+                break;
+        }
+
+        return $this->redirect('index');
     }
 
     /**

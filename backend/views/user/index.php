@@ -45,7 +45,7 @@ Yii::$app->assetManager->forceCopy = true;
                 'template' => '{view} {update} {delete} {permissions}',
                 'buttons' => [
                     'permissions' => function($url, $model, $key) {
-                        return Html::a('', '#', ['class' => 'fas fa-user-check', 'onclick' => 'alertPermissions()']);
+                        return Html::a('', '#', ['class' => 'fas fa-user-check', 'onclick' => 'alertPermissions("'.Url::toRoute('user/permissions').'", '.$model->getId().')']);
                     }
                 ]
             ],
