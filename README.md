@@ -53,7 +53,7 @@
 3- ..\\vendor\\bin\\codecept run acceptance ExempleCest --html
 4- ..\\vendor\\bin\\codecept run functional  LoginCest --html
 
-## Correr nos 5 terminais os serviços
+## Correr nos 4 terminais os serviços
 
 - ### Terminal 1
 > - yii serve --docroot="@backend/web/"  
@@ -69,7 +69,7 @@
 - ### Terminal 4
 >mosquitto_sub -v -t geral
 
-## Equipa que dezenvolveu FoodMan
+## Equipa que desenvolveu FoodMan
 >-> **Alexandre Bértolo 2190754**  
 >-> **Sérgio Ezequiel 2190710**  
 >-> **Vladyslav Bobko 2190749**
