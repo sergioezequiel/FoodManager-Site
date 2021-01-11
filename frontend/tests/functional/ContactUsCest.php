@@ -29,7 +29,10 @@ class ContactUsCest
 
         $I->click('Send', '#send');
 
-        $I->see('', '.invalid-feedback');
+        $I->cantSee('Nome cannot be blank.','.invalid-feedback');
+        $I->cantSee('Subjet cannot be blank.','.invalid-feedback');
+        $I->cantSee('Email cannot be blank.','.invalid-feedback');
+        $I->cantSee('Texto cannot be blank.','.invalid-feedback');
     }
 
     public function tryErro(FunctionalTester $I)
@@ -39,12 +42,12 @@ class ContactUsCest
         $I->see('Tem uma ideia? Tem sugestão?Nós queremos saber!');
         $I->submitForm($this->fromId, []);
 
-        $I->makeHtmlSnapshot('PILA');
+        $I->makeHtmlSnapshot('trest');
+
         $I->canSee('Nome cannot be blank.','.invalid-feedback');
-       //$I->seeElement( Locator::contains('div[@invalid-feedback]', 'Nome cannot be blank.'));
-        //$I->seeElement( Locator::contains('div[@invalid-feedback]', 'Subjet cannot be blank.'));
-        //$I->seeElement( Locator::contains('div[@invalid-feedback]', 'Email cannot be blank.'));
-        //$I->seeElement( Locator::contains('div[@invalid-feedback]', 'Texto cannot be blank.'));
+        $I->canSee('Subjet cannot be blank.','.invalid-feedback');
+        $I->canSee('Email cannot be blank.','.invalid-feedback');
+        $I->canSee('Texto cannot be blank.','.invalid-feedback');
 
     }
 }

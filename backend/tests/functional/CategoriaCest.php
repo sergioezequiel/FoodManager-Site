@@ -7,7 +7,6 @@ use common\fixtures\UserFixture;
 
 class CategoriaCest
 {
-
     public function _fixtures()
     {
         return [
@@ -33,18 +32,16 @@ class CategoriaCest
     // tests
     public function tryAccessCategorias(FunctionalTester $I)
     {
-        //  $I->amLoggedInAs('admin');
         $I->amOnPage('/categorias/index');
-
         $I->see('Categorias');
-        //   $I->click('logout');
     }
 
     public function tryFillFormCategoria(FunctionalTester $I)
     {
         $I->amOnPage('/categorias/create');
-        $I->fillField('Nome', 'Uma categoria');
-        $I->click('Save');
+        $I->fillField('#categoria-nome', 'Uma categoria');
+        $I->click('Guardar');
+        $I->cantSee('Nome cannot be blank.', '.help-block');
         $I->seeRecord(Categoria::class, ['nome' => 'Uma categoria']);
         $I->canSeeRecord(Categoria::class, ['nome' => 'Uma categoria']);
     }
@@ -53,7 +50,7 @@ class CategoriaCest
     {
         $I->amOnPage('/categorias/create');
         $I->fillField('Nome', '');
-        $I->click('Save');
+        $I->click('Guardar');
         $I->canSee('Nome cannot be blank.', '.help-block');
         $I->cantSeeRecord(Categoria::class, ['nome' => 'Uma categoria']);
     }
@@ -64,4 +61,5 @@ class CategoriaCest
         $I->seeNumRecords(4, 'categorias');
         $I->dontSeeRecord(Categoria::class, ['nome' => 'Uma categoria']);
     }
+
 }

@@ -34,32 +34,50 @@ class LoginCest
 
     public function checkEmpty(FunctionalTester $I)
     {
-        $I->fillField('#login input[name="User[email]"]', '');
-        $I->fillField('#login input[name=password]', '');
+        $I->fillField('#username', '');
+        $I->fillField('#password', '');
         $I->click('Log In', '#login');
 
+      //  $I->canSee('Email cannot be blank.','.invalid-feedback');
 
-        //$I->submitForm('#login', $this->formParams('', ''));
-        //$I->seeValidationError('Email cannot be blank.');
+        $I->see('Faça o seu login:');
     }
 
     public function checkWrongPassword(FunctionalTester $I)
     {
         $I->submitForm('#login', $this->formParams('admin', 'wrong'));
+        $I->see('Faça o seu login:');
+
         //$I->seeValidationError('Incorrect username or password.');
     }
 
-    public function checkInactiveAccount(FunctionalTester $I)
-    {
-        $I->submitForm('#login', $this->formParams('test.test', 'Test1234'));
-        //$I->seeValidationError('Incorrect username or password');
-    }
 
     public function checkValidLogin(FunctionalTester $I)
     {
-        $I->submitForm('#login', $this->formParams('erau', 'password_0'));
+        $I->fillField('#username', 'admin');
+        $I->fillField('#password', 'uwuowo123');
+        $I->click('Log In', '#login');
+        $I->cantSee('Faça o seu login:');
+
         //$I->see('Logout (erau)', 'form button[type=submit]');
         //$I->dontSeeLink('Login');
         //$I->dontSeeLink('Signup');
+    }
+
+    public function checkValidLoginLogout(FunctionalTester $I)
+    {
+        $I->fillField('#username', 'admin');
+        $I->fillField('#password', 'uwuowo123');
+        $I->click('Log In', '#login');
+        $I->cantSee('Faça o seu login:');
+
+
+        $I->click('Logout', '.nav');
+        $I->amOnPage('/site/login');
+        $I->canSee('Faça o seu login:');
+        //$I->see('Logout (erau)', 'form button[type=submit]');
+        //$I->dontSeeLink('Login');
+        //$I->dontSeeLink('Signup');
+
     }
 }

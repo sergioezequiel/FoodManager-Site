@@ -2,12 +2,22 @@
 
 namespace frontend\tests\acceptance;
 
+use common\fixtures\UserFixture;
 use frontend\tests\AcceptanceTester;
 use yii\db\Exception;
 use yii\helpers\Url;
 
 class MainCest
 {
+    public function _fixtures()
+    {
+        return [
+            'user' => [
+                'class' => UserFixture::className(),
+                'dataFile' => codecept_data_dir() . 'login_data.php',
+            ],
+        ];
+    }
 
     public function _before(AcceptanceTester $I)
     {
@@ -95,13 +105,22 @@ class MainCest
         $I->see('Faça o seu login:');
 
         $I->wait(2);
-        $I->fillField('#login input[name="User[email]"]', 'exemplo@gmail.com');
-        $I->fillField('#login input[name=password]', '123456789');
-        $I->checkOption('#login input[name=remember] ');
+        $I->fillField('#username', 'admin');
+        $I->fillField('#password', 'uwuowo123');
+        //$I->checkOption('#login input[name=remember] ');
+        $I->wait(2);
+        $I->click('Log In', '#login');
+        $I->see('Logout');
         $I->wait(2);
 
-        $I->click('Log In', '#login');
-
         //$I->seeCurrentUrlEquals('/index-test.php/site/login');
+    }
+
+    public function checkReceitas(AcceptanceTester $I)
+    {
+        $I->amOnPage('/site/receita');
+        $I->wait(2);
+        $I->amOnPage('/site/ingredientes?receita=2');
+        $I->wait(2);
     }
 }
