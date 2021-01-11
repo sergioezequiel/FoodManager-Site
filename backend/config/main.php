@@ -48,6 +48,10 @@ return [
             'errorAction' => 'site/error',
         ],
 
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -101,6 +105,13 @@ return [
                         'GET tiposglobais/<apikey:\w+>' => 'tiposglobais',
                     ]
                 ],
+            ],
+        ],
+
+        'view' => [
+            'theme' => [
+                'basePath' => '@app/themes/sbclean',
+                'baseUrl' => '@web',
             ],
         ],
     ],

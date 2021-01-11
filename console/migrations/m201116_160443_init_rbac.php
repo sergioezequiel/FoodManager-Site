@@ -83,11 +83,15 @@ class m201116_160443_init_rbac extends Migration
         $auth->add($addModerador);
 
         $admin = $auth->createRole('admin');
-        $auth -> add($admin);
-        $auth -> addChild($admin,$addModerador);
-        $auth -> addChild($admin,$gestor);
-        $auth -> addChild($admin,$moderador);
-        $auth -> addChild($admin,$editor);
+        $auth->add($admin);
+        $auth->addChild($admin,$addModerador);
+        $auth->addChild($admin,$gestor);
+        $auth->addChild($admin,$moderador);
+        $auth->addChild($admin,$editor);
+
+        // Utilizador sem permissões nenhumas para verificar se tem acesso ao backoffice ou não
+        $user = $auth->createRole('user');
+        $auth->add($user);
     }
 
     /**

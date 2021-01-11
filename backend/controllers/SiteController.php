@@ -35,7 +35,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -53,6 +53,23 @@ class SiteController extends Controller
         ];
     }
 
+    public function beforeAction($action)
+    {
+        // Para mostrar com o layout vazio caso o utilizador não tiver o login feito, porque se não mostrava o layout do backoffice
+        if ($action->id == 'error' && Yii::$app->user->isGuest) {
+            $this->layout = 'blank';
+            return parent::beforeAction($action);
+        }
+
+        if(!Yii::$app->user->isGuest) {
+            $user = \common\models\User::find()->where(['id' => Yii::$app->user->getId()])->one();
+            $this->view->params['username'] = $user->username;
+        }
+
+        return parent::beforeAction($action);
+    }
+
+
     /**
      * Displays homepage.
      *
@@ -68,7 +85,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionLogin()
+   public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
