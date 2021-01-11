@@ -10,8 +10,6 @@ use yii\bootstrap4\Html;
 
 $assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'FoodManager';
-
-$model = new Feedback();
 ?>
 <main class="page contact-us-page">
     <section class="clean-block clean-form dark">
@@ -23,12 +21,13 @@ $model = new Feedback();
             <?php $form = ActiveForm::begin(['id' => 'send']); ?>
 
             <div class="form-group">
-                <?= $form->field($model, 'nome')->textInput(['autofocus' => true, 'id' => 'nome', 'className' => 'form-control']) ?>
+                <?= $form->field($model, 'nome')->textInput(['autofocus' => true, 'errorOptions' => ['tag' => false]]) ?>
+                <p class="invalid-feedback">Username cannot be blank.</p>
             </div>
 
             <div class="form-group">
                 <label for="tipo">Choose a car:</label>
-                <select name="tipo" id="tipo" class="form-control" required>
+                <select name="tipo" id="tipo" class="form-control">
                     <option value="0">Sugestão de Receita</option>
                     <option value="1">Melhoria na App</option>
                     <option value="2">Sugestões</option>

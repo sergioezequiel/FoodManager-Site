@@ -39,6 +39,10 @@ class FeedbackTest extends Unit
     {
         $feedback = new Feedback();
         $feedback->idfeedback = 99;
+        $feedback->nome = "Um nome";
+        $feedback->email = 'uma@asd.com';
+        $feedback->subjet = "Um subjest";
+        $feedback->tipo = 0;
         $feedback->texto = 'This é um teste ao feedback';
         $feedback->tipo = 0;
         $feedback->idutilizador = 99;

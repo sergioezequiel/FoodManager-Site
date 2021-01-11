@@ -33,12 +33,27 @@ class LoginCest
     public function loginUser(FunctionalTester $I)
     {
         $I->amOnPage('/site/login');
-        $I->fillField('Username', 'erau');
-        $I->fillField('Password', 'password_0');
+        $I->fillField('Username', 'admin');
+        $I->fillField('Password', 'uwuowo123');
         $I->click('login-button');
 
-        $I->see('Logout (erau)', 'form button[type=submit]');
-        $I->dontSeeLink('Login');
-        $I->dontSeeLink('Signup');
+        $I->cantSee('login-button');
+        $I->cantSee('Username cannot be blank.', '.help-block');
+        $I->cantSee('Password cannot be blank.', '.help-block');
+
+        $I->see('FoodManager');
+        $I->makeHtmlSnapshot('test');
+
+    }
+
+    public function failLoginUser (FunctionalTester $I){
+        $I->amOnPage('/site/login');
+        $I->fillField('Username', '');
+        $I->fillField('Password', '');
+        $I->click('login-button');
+        $I->see('Username cannot be blank.', '.help-block');
+        $I->see('Password cannot be blank.', '.help-block');
+
+        $I->makeHtmlSnapshot('test');
     }
 }

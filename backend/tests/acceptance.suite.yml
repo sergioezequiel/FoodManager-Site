@@ -1,0 +1,13 @@
+suite_namespace: frontend\tests\acceptance
+actor: AcceptanceTester
+modules:
+    enabled:
+        - Asserts:
+        - WebDriver:
+              url: http://localhost:8080
+              browser: chrome
+        - Yii2:
+              part: orm
+
+
+
