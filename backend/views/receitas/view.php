@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Receita */
 
-$this->title = $model->idreceita;
+$this->title = $model->nome;
 $this->params['breadcrumbs'][] = ['label' => 'Receitas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -37,11 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             [
                 'label' => 'Duração da Receita',
-                'attribute' => 'duracaoreceita'
+                'attribute' => 'duracaoreceitamin'
             ],
             [
                 'label' => 'Duração da Preparação',
-                'attribute' => 'duracaopreparacao'
+                'attribute' => 'duracaopreparacaomin'
             ],
             'passos:ntext',
             [

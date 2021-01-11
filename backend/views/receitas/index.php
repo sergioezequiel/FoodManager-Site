@@ -30,11 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             [
                 'label' => 'Duração da Receita',
-                'attribute' => 'duracaoreceita'
+                'attribute' => 'duracaoreceitamin'
             ],
             [
                 'label' => 'Duração da Preparação',
-                'attribute' => 'duracaopreparacao'
+                'attribute' => 'duracaopreparacaomin'
             ],
             //'passos:ntext',
             [

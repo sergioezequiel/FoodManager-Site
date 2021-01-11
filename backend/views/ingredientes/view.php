@@ -1,15 +1,16 @@
 <?php
 
 use yii\helpers\Html;
+use yii\web\YiiAsset;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Ingrediente */
 
-$this->title = $model->idingrediente;
+$this->title = $model->nome;
 $this->params['breadcrumbs'][] = ['label' => 'Ingredientes da receita '.$model->idreceita, 'url' => ['index?receita='.$model->idreceita]];
-$this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+$this->params['breadcrumbs'][] = $model->nome;
+YiiAsset::register($this);
 ?>
 <div class="ingrediente-view">
 

@@ -82,4 +82,12 @@ class Receita extends \yii\db\ActiveRecord
     public function getUsernameReceita() {
         return $this->idutilizador0->username;
     }
+
+    public function getDuracaoReceitaMin() {
+        return $this->duracaoreceita.' min';
+    }
+
+    public function getDuracaoPreparacaoMin() {
+        return $this->duracaopreparacao.' min';
+    }
 }
