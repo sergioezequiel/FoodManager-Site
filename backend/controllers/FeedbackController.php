@@ -48,8 +48,10 @@ class FeedbackController extends Controller
             return parent::beforeAction($action);
         }
 
-        $user = \common\models\User::find()->where('id='.Yii::$app->user->getId())->one();
-        $this->view->params['username'] = $user->username;
+        if(!Yii::$app->user->isGuest) {
+            $user = \common\models\User::find()->where(['id' => Yii::$app->user->getId()])->one();
+            $this->view->params['username'] = $user->username;
+        }
 
         return parent::beforeAction($action);
     }

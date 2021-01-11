@@ -1,8 +1,10 @@
 <?php
 namespace backend\controllers;
 
-use common\models\LoginForm;
+use app\models\LoginFormBackend;
+use app\models\Receita;
 use Yii;
+use yii\db\Query;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -77,7 +79,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $numReceitas = (new Query())->select('count(*) as contagem')->from('receitas')->one();
+        $numProdutos = (new Query())->select('count(*) as contagem')->from('produtos')->one();
+
+        return $this->render('index', ['numreceitas' => $numReceitas['contagem'], 'numprodutos' => $numProdutos['contagem']]);
     }
 
     /**
@@ -93,7 +98,7 @@ class SiteController extends Controller
 
         $this->layout = 'blank';
 
-        $model = new LoginForm();
+        $model = new LoginFormBackend();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
