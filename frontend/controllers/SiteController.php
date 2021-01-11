@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Feedback;
 use app\models\Ingrediente;
 use app\models\Itensdespensa;
 use app\models\Receita;
@@ -48,7 +49,18 @@ class SiteController extends Controller
     }
 
     public function actionContactus() {
-        return $this->render('contactus');
+        $model = new Feedback();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+
+        return $this->render('contactus', [
+            'model' => $model,
+        ]);
     }
 
     public function actionLogin() {

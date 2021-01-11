@@ -11,7 +11,7 @@ use yii\bootstrap4\Html;
 $assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>
-<main class="page contact-us-page">
+    <main class="page contact-us-page">
     <section class="clean-block clean-form dark">
         <div class="container">
             <div class="block-heading">
@@ -21,7 +21,7 @@ $this->title = 'FoodManager';
             <?php $form = ActiveForm::begin(['id' => 'send']); ?>
 
             <div class="form-group">
-                <?= $form->field($model, 'nome')->textInput(['autofocus' => true, 'errorOptions' => ['tag' => false]]) ?>
+                <?= $form->field($model, 'nome')->textInput(['autofocus' => true]) ?>
                 <p class="invalid-feedback">Username cannot be blank.</p>
             </div>
 

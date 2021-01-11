@@ -33,10 +33,10 @@ class ProdutoCest
     {
         $I->amOnPage('/produtos/create');
 
-        $I->fillField('Nome', 'Um produto');
-        $I->fillField('Unidade', 'g');
-        $I->fillField('Imagem', 'https://media.continente.pt/Sonae.eGlobal.Presentation.Web.Media/media.axd?resourceSearchType=2&resource=ProductId=6225480(eCsf$RetekProductCatalog$MegastoreContinenteOnline$Continente)&siteId=1&channelId=1&width=180&height=170&defaultOptions=1');
-        $I->fillField('Idcategoria', '1');
+        $I->fillField('#produto-nome', 'Um produto');
+        $I->fillField('#produto-unidade', 'g');
+        $I->fillField('#produto-imagem', 'Uma imagem para o produto');
+        $I->fillField('#produto-idcategoria', '1');
         $I->click('Save');
 
         $I->canSeeRecord(Produto::class, ['nome' => 'Um produto']);
@@ -51,10 +51,10 @@ class ProdutoCest
 
         $I->amOnPage('/produtos/create');
 
-        $I->fillField('Nome', '');
-        $I->fillField('Unidade', '');
-        $I->fillField('Imagem', '');
-        $I->fillField('Idcategoria', '');
+        $I->fillField('#produto-nome', '');
+        $I->fillField('#produto-unidade', '');
+        $I->fillField('#produto-imagem', '');
+        $I->fillField('#produto-idcategoria', '');
         $I->click('Save');
 
         $I->cantSeeRecord(Produto::class, ['nome' => 'Um produto']);

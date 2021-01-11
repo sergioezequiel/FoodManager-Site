@@ -15,7 +15,7 @@ $this->title = 'FoodManager';
                 <h2 class="text-info">Log In</h2>
                 <p>Faça o seu login:</p>
             </div>
-            <form action="<?= Url::toRoute('site/login') ?>" method="post">
+            <form id="login" action="<?= Url::toRoute('site/login') ?>" method="post">
                 <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
                 <div class="form-group">
                     <label for="username">Username</label>

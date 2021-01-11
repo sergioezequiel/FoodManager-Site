@@ -30,30 +30,32 @@ class ReceitaCest
         // $I->amConnectedToDatabase('foodman_test');
         $I->amOnPage('/receitas/create');
 
-        $I->fillField('Nome', 'Uma receita');
-        $I->fillField('Duracaoreceita', '60');
-        $I->fillField('Duracaopreparacao', '40');
-        $I->fillField('Passos', 'Passos para uma receita para se comer');
-        $I->fillField('Idutilizador', '1');
+        $I->fillField('#receita-imagem', 'Receitas para a imagem');
+        $I->fillField('#receita-nome', 'Receitas com bolo');
+        $I->fillField('#receita-duracaopreparacao', '80');
+        $I->fillField('#receita-duracaoreceita', '60');
+        $I->fillField('#receita-passos', 'Passos para uma receita para se comer um bom bolo ');
+        $I->fillField('#receita-idutilizador', '1');
         $I->click('Save');
         $I->cantSee('Nome cannot be blank.', '.help-block');
         $I->cantSee('Duracaoreceita cannot be blank.', '.help-block');
         $I->cantSee('Duracaopreparacao cannot be blank.', '.help-block');
         $I->cantSee('Passos cannot be blank.', '.help-block');
         $I->cantSee('Idutilizador cannot be blank.', '.help-block');
-        $I->canSeeRecord(Receita::class, ['nome' => 'Uma receita']);
-        $I->seeRecord(Receita::class, ['nome' => 'Uma receita']);
+        $I->canSeeRecord(Receita::class, ['nome' => 'Receitas com bolo']);
+        $I->seeRecord(Receita::class, ['nome' => 'Receitas com bolo']);
     }
 
     public function tryReceita(FunctionalTester $I)
     {
         $I->amOnPage('/receitas/create');
 
-        $I->fillField('Nome', '');
-        $I->fillField('Duracaoreceita', '');
-        $I->fillField('Duracaopreparacao', '');
-        $I->fillField('Passos', '');
-        $I->fillField('Idutilizador', '');
+        $I->fillField('#receita-imagem', '');
+        $I->fillField('#receita-nome', '');
+        $I->fillField('#receita-duracaopreparacao', '');
+        $I->fillField('#receita-duracaoreceita', '');
+        $I->fillField('#receita-passos', '');
+        $I->fillField('#receita-idutilizador', '');
         $I->click('Save');
 
         $I->see('Nome cannot be blank.', '.help-block');
