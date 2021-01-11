@@ -21,7 +21,7 @@ class m210106_195419_receitas extends Migration
         $this->createTable('{{%receitas}}', [
             'idreceita' => $this->primaryKey()->notNull(),
             'imagem' => $this->getDb()->getSchema()->createColumnSchemaBuilder('longtext')->notNull(),
-            'nome' => $this->string(45)->notNull(),
+            'nome' => $this->string(100)->notNull(),
             'duracaoreceita'=> $this->integer()->notNull(),
             'duracaopreparacao' => $this->integer()->notNull(),
             'passos' => $this->getDb()->getSchema()->createColumnSchemaBuilder('longtext')->notNull(),
