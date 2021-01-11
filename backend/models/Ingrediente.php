@@ -75,4 +75,40 @@ class Ingrediente extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Produto::className(), ['idproduto' => 'idproduto']);
     }
+
+    public function getQuantUnidade() {
+        return $this->quantnecessaria.' '.$this->idproduto0->unidade;
+    }
+
+    public function getTipoTexto() {
+        $texto = '';
+
+        switch ($this->tipopreparacao) {
+            case 0:
+                $texto = 'Sem Preparação';
+                break;
+            case 1:
+                $texto = 'Às rodelas';
+                break;
+            case 2:
+                $texto = 'Aos cubos';
+                break;
+            case 3:
+                $texto = 'Outro';
+                break;
+            default:
+                $texto = 'Tipo Desconhecido';
+                break;
+        }
+
+        return $texto;
+    }
+
+    public function getProdutoName() {
+        return $this->idproduto0->nome;
+    }
+
+    public function getReceitaName() {
+        return $this->idreceita0->nome;
+    }
 }

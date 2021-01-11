@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CodigoBarras */
 
-$this->title = 'Update Codigo Barras: ' . $model->codigobarras;
-$this->params['breadcrumbs'][] = ['label' => 'Codigo Barras', 'url' => ['index']];
+$this->title = 'Editar Codigo Barras: ' . $model->codigobarras;
+$this->params['breadcrumbs'][] = ['label' => 'Códigos Barras', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->codigobarras, 'url' => ['view', 'id' => $model->codigobarras]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

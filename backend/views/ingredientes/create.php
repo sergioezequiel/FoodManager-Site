@@ -3,10 +3,12 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Ingrediente */
+/* @var $model app\models\Ingrediente
+ * @var $receita integer
+ */
 
-$this->title = 'Create Ingrediente';
-$this->params['breadcrumbs'][] = ['label' => 'Ingredientes', 'url' => ['index']];
+$this->title = 'Criar Ingrediente';
+$this->params['breadcrumbs'][] = ['label' => 'Ingredientes da receita '.$receita, 'url' => ['index?receita='.$receita]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ingrediente-create">
@@ -15,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'receita' => $receita
     ]) ?>
 
 </div>

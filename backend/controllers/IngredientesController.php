@@ -2,9 +2,11 @@
 
 namespace backend\controllers;
 
+use app\models\Produto;
 use Yii;
 use app\models\Ingrediente;
 use app\models\IngredienteSearch;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -60,14 +62,15 @@ class IngredientesController extends Controller
      * Lists all Ingrediente models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($receita)
     {
-        $searchModel = new IngredienteSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Ingrediente::find()->andWhere(['idreceita' => $receita]),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'receita' => $receita
         ]);
     }
 
@@ -89,7 +92,7 @@ class IngredientesController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($receita)
     {
         $model = new Ingrediente();
 
@@ -99,6 +102,7 @@ class IngredientesController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'receita' => $receita
         ]);
     }
 
@@ -133,7 +137,7 @@ class IngredientesController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index?receita='.$id]);
     }
 
     /**

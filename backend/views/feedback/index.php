@@ -4,9 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
+/* @var $searchModel app\models\FeedbackSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Feedbacks';
+$this->title = 'Feedback';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="feedback-index">
@@ -14,19 +15,31 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Feedback', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Feedback', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idfeedback',
-            'texto:ntext',
-            'tipo',
-            'idutilizador',
+            'nome',
+            [
+                'label' => 'Assunto',
+                'attribute' => 'subjet'
+            ],
+            'email:email',
+            [
+                'label' => 'Tipo',
+                'attribute' => 'nometipo'
+            ],
+            [
+                'label' => 'Utilizador',
+                'attribute' => 'usernamefeedback'
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

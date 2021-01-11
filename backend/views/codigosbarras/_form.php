@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'codigobarras')->textInput() ?>
+    <?= $form->field($model, 'codigobarras')->textInput()->label('Código Barras') ?>
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'quantidade')->textInput() ?>
 
-    <?= $form->field($model, 'idproduto')->textInput() ?>
+    <?= $form->field($model, 'idproduto')->textInput()->label('ID Produto') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

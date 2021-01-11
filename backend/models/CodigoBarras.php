@@ -13,7 +13,7 @@ use Yii;
  * @property float $quantidade
  * @property int $idproduto
  *
- * @property Produtos $idproduto0
+ * @property Produto $idproduto0
  */
 class CodigoBarras extends \yii\db\ActiveRecord
 {
@@ -61,6 +61,14 @@ class CodigoBarras extends \yii\db\ActiveRecord
      */
     public function getIdproduto0()
     {
-        return $this->hasOne(Produtos::className(), ['idproduto' => 'idproduto']);
+        return $this->hasOne(Produto::className(), ['idproduto' => 'idproduto']);
+    }
+
+    public function getProdutoName() {
+        return $this->idproduto0->nome;
+    }
+
+    public function getQuantidadeComUnidade() {
+        return $this->quantidade.' '.$this->idproduto0->unidade;
     }
 }

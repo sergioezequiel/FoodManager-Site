@@ -4,28 +4,28 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ReceitaSearch */
+/* @var $model app\models\FeedbackSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="receita-search">
+<div class="feedback-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idreceita') ?>
-
-    <?= $form->field($model, 'imagem') ?>
+    <?= $form->field($model, 'idfeedback') ?>
 
     <?= $form->field($model, 'nome') ?>
 
-    <?= $form->field($model, 'duracaoreceita') ?>
+    <?= $form->field($model, 'subjet') ?>
 
-    <?= $form->field($model, 'duracaopreparacao') ?>
+    <?= $form->field($model, 'email') ?>
 
-    <?php // echo $form->field($model, 'passos') ?>
+    <?= $form->field($model, 'texto') ?>
+
+    <?php // echo $form->field($model, 'tipo') ?>
 
     <?php // echo $form->field($model, 'idutilizador') ?>
 

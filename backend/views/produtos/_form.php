@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'imagem')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'idcategoria')->textInput() ?>
+    <?= $form->field($model, 'idcategoria')->textInput()->label('ID Categoria') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

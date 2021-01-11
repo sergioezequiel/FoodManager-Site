@@ -78,4 +78,16 @@ class ItemDespensa extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'idutilizador']);
     }
+
+    public function getProdutoName() {
+        return $this->idproduto0->nome;
+    }
+
+    public function getUsernameDespensa() {
+        return $this->idutilizador0->username;
+    }
+
+    public function getQuantidadeUnidade() {
+        return $this->quantidade.' '.$this->idproduto0->unidade;
+    }
 }

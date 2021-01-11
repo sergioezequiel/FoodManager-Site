@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CodigoBarras */
 
-$this->title = 'Create Codigo Barras';
-$this->params['breadcrumbs'][] = ['label' => 'Codigo Barras', 'url' => ['index']];
+$this->title = 'Criar Código Barras';
+$this->params['breadcrumbs'][] = ['label' => 'Códigos Barras', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="codigo-barras-create">

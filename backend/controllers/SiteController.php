@@ -81,8 +81,10 @@ class SiteController extends Controller
     {
         $numReceitas = (new Query())->select('count(*) as contagem')->from('receitas')->one();
         $numProdutos = (new Query())->select('count(*) as contagem')->from('produtos')->one();
+        $numUsers = (new Query())->select('count(*) as contagem')->from('user')->one();
+        $numFeedback = (new Query())->select('count(*) as contagem')->from('feedback')->one();
 
-        return $this->render('index', ['numreceitas' => $numReceitas['contagem'], 'numprodutos' => $numProdutos['contagem']]);
+        return $this->render('index', ['numreceitas' => $numReceitas['contagem'], 'numprodutos' => $numProdutos['contagem'], 'numusers' => $numUsers['contagem'], 'numfeedback' => $numFeedback['contagem']]);
     }
 
     /**

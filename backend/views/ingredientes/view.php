@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Ingrediente */
 
 $this->title = $model->idingrediente;
-$this->params['breadcrumbs'][] = ['label' => 'Ingredientes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Ingredientes da receita '.$model->idreceita, 'url' => ['index?receita='.$model->idingrediente]];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idingrediente], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idingrediente], [
+        <?= Html::a('Editar', ['update', 'id' => $model->idingrediente], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->idingrediente], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Tem a certeza que pretende eliminar este item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,12 +29,39 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idingrediente',
+            [
+                'label' => 'ID Ingrediente',
+                'attribute' => 'idingrediente'
+            ],
             'nome',
-            'quantnecessaria',
-            'tipopreparacao',
-            'idproduto',
-            'idreceita',
+            [
+                'label' => 'Quantidade Necessária',
+                'attribute' => 'quantunidade'
+            ],
+            [
+                'label' => 'Tipo de Preparação (num)',
+                'attribute' => 'tipopreparacao'
+            ],
+            [
+                'label' => 'Tipo de Preparação',
+                'attribute' => 'tipotexto'
+            ],
+            [
+                'label' => 'ID Produto',
+                'attribute' => 'idproduto'
+            ],
+            [
+                'label' => 'Produto',
+                'attribute' => 'produtoname'
+            ],
+            [
+                'label' => 'ID Receita',
+                'attribute' => 'idreceita'
+            ],
+            [
+                'label' => 'Receita',
+                'attribute' => 'receitaname'
+            ],
         ],
     ]) ?>
 

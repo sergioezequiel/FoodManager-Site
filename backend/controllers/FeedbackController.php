@@ -4,8 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use app\models\Feedback;
-use yii\data\ActiveDataProvider;
-use yii\filters\AccessControl;
+use app\models\FeedbackSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,16 +20,6 @@ class FeedbackController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['index','delete','create','update','view'],
-                        'roles' => ['gestor', 'moderador', 'admin']
-                    ],
-                ]
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -62,11 +51,11 @@ class FeedbackController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Feedback::find(),
-        ]);
+        $searchModel = new FeedbackSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }

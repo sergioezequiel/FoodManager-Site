@@ -20,6 +20,9 @@ class m210106_200438_feedback extends Migration
 
         $this->createTable('{{%feedback}}', [
             'idfeedback' => $this->primaryKey()->notNull(),
+            'nome' => $this->string()->notNull(),
+            'subjet' => $this->string()->notNull(),
+            'email' => $this->string()->notNull(),
             'texto' => $this->text()->notNull(),
             'tipo' => $this->integer()->notNull(),
             'idutilizador' => $this->integer()->notNull()
