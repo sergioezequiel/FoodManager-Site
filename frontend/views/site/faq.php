@@ -28,12 +28,9 @@ $this->title = 'FoodManager';
                     </div>
                 </div>
                 <div class="faq-item">
-                    <h4 class="question">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+                    <h4 class="question">Não consigo realizar login.</h4>
                     <div class="answer">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor
-                            in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;Lorem
-                            ipsum dolor sit amet, consectetur adipiscing
-                            elit.</p>
+                        <p>Caso não consiga realizar login contacte support.</p>
                     </div>
                 </div>
             </div>

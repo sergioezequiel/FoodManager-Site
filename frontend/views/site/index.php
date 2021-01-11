@@ -22,22 +22,22 @@ $this->title = 'FoodManager';
             <div class="row align-items-center">
                 <div class="col-md-6" style="width: 533px;text-align: left;">
                     <h3>Página do Login</h3>
-                    <p><br>Inicie a sua sessão rapidamente para a aplicação atravez da pagina do login.<br><br></p><img class="img-thumbnail" src="<?= $assets->baseUrl ?>/assets/img/scenery/Login.jpg" style="height: 600px;"></div>
+                    <p><br>Inicie a sua sessão rapidamente para a aplicação atravez da pagina do login.<br><br></p><img class="img-thumbnail" width="279" height="590" src="<?= $assets->baseUrl ?>/assets/img/scenery/Login.jpg" style="height: 600px;"></div>
                 <div class="col-md-6" style="width: 533px;text-align: right;">
                     <h3>Página do Registo</h3>
-                    <p>Ainda não tem conta? Registre-se logo na aplicação e facili-te o seu acesso.</p><img class="img-thumbnail" src="<?= $assets->baseUrl ?>/assets/img/scenery/Registo.jpg" style="height: 600px;"></div>
+                    <p>Ainda não tem conta? Registre-se logo na aplicação e facili-te o seu acesso.</p><img class="img-thumbnail" width="279" height="590" src="<?= $assets->baseUrl ?>/assets/img/scenery/Registo.jpg" style="height: 600px;"></div>
                 <div class="col-md-6">
                     <div class="getting-started-info"></div>
                 </div>
             </div>
             <div class="row align-items-center">
                 <div class="col-md-6" style="width: 533px;text-align: left;">
-                    <h3>Lorem impsum dolor sit amet</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p><img class="img-thumbnail" src="<?= $assets->baseUrl ?>/assets/img/scenery/Login.jpg"
+                    <h3>Perfil eficaz</h3>
+                    <p>Poderá mostrar as receitas e os ingredientes disponiveis. </p><img class="img-thumbnail" width="279" height="590" src="<?= $assets->baseUrl ?>/assets/img/scenery/perfil.png"
                                                                                                                                                                                                              style="height: 600px;"></div>
                 <div class="col-md-6" style="width: 533px;text-align: right;">
-                    <h3>Lorem impsum dolor sit amet</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p><img class="img-thumbnail" src="<?= $assets->baseUrl ?>/assets/img/scenery/Login.jpg"
+                    <h3>Shopping cart</h3>
+                    <p>Evite esquecer o que comprar, com esta ferramente esteja sempre atualizado.</p><img class="img-thumbnail" width="279" height="590" src="<?= $assets->baseUrl ?>/assets/img/scenery/shopping.png"
                                                                                                                                                                                                              style="height: 600px;"></div>
                 <div class="col-md-6">
                     <div class="getting-started-info"></div>

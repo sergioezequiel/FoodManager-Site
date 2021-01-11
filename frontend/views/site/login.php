@@ -27,8 +27,8 @@ $this->title = 'FoodManager';
                 </div>
                 <div class="form-group">
                     <div class="form-check">
-                        <label class="form-check-label" for="checkbox">Remember me</label>
                         <input class="form-check-input" type="checkbox" name="LoginForm[rememberMe]" id="checkbox">
+                        <label class="form-check-label" for="checkbox">Remember me</label>
                     </div>
                 </div>
                 <input class="btn btn-primary btn-block" type="submit" value="Log In"/>
