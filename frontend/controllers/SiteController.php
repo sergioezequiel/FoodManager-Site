@@ -1,6 +1,10 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Ingrediente;
+use app\models\Itensdespensa;
+use app\models\Receita;
+use app\models\Receitas;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -18,8 +22,18 @@ use frontend\models\ContactForm;
 /**
  * Site controller
  */
+
 class SiteController extends Controller
 {
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index');
@@ -38,7 +52,20 @@ class SiteController extends Controller
     }
 
     public function actionLogin() {
-        return $this->render('login');
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        } else {
+            $model->password = '';
+
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
     }
 
     public function actionSignup()
@@ -52,6 +79,32 @@ class SiteController extends Controller
         return $this->render('signup', [
             'model' => $model,
         ]);
+    }
+
+    public function actionReceita() {
+        $receitas = Receita::find()->all();
+        return $this->render('receita',['receitas'=>$receitas]);
+    }
+
+    public function actionItemdespensa() {
+        $despensa = Itensdespensa::find()->andWhere(['idutilizador' => Yii::$app->user->id])->all();
+        return $this->render('itemdespensa',['despensa'=>$despensa]);
+    }
+
+    public function actionIngredientes($receita) {
+        {
+            return $this->render('ingredientes', [
+                'ingredientes' => Ingrediente::find()->andWhere(['idreceita' => $receita])->all(),
+                'receita' => Receita::find()->andWhere(['idreceita' => $receita])->one(),
+            ]);
+        }
+    }
+
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
     }
 }
 
