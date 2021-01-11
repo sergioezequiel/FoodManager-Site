@@ -58,18 +58,18 @@ class m210107_001209_insert extends Migration
         //$this->insert('produtos', array('idproduto' => '', 'nome' => '', 'unidade' => '', 'imagem' => 'https://via.placeholder.com/100x100?text=FoodMan', 'idcategoria' => ''));
 
         /* Receitas */
-        $this->insert('receitas', array('idreceita' => '1', 'imagem' => 'https://via.placeholder.com/500x500?text=FoodMan', 'nome' => 'Arroz Doce Integral de Coco e Laranja Caramelizada', 'duracaoreceita' => '60', 'duracaopreparacao' => '0', 'passos' => 'Coloque ao lume o arroz com o leite de coco, o extracto de baunilha e as raspas de laranja. Deixe cozinhar em lume baixo destapado, mexendo frequentemente, durante cerca de 15 minutos ou até o arroz absorver o leite de coco e obter uma cosistência cremosa.
-        Para as laranjas caramelizadas corte uma laranja em 8 rodelas.
-        Numa panela coloque o sumo da outra laranja e adicione o açúcar. Deixe cozinhar até ferver, sem mexer.
-        Quando começar a ferver, baixe o lume e mexa ocasionalmente até a mistura começar a ficar dourada e espessa. Retire do lume e adicione as rodelas de laranja. Deixe arrefecer.
-        Sirva o arroz doce com as laranjas caramelizadas. Polvilhe com canela e um fio de leite de coco. Se desejar mais doce adicione também um fio de mel.
-        Fonte: https://www.aldi.pt/receitas/Outra-Vez-Arroz/Arroz-Doce-Integral-de-Coco-e-Laranja-Caramelizada.html', 'idutilizador' => '1'));
+        $this->insert('receitas', array('idreceita' => '1', 'imagem' => 'https://via.placeholder.com/500x500?text=FoodMan', 'nome' => 'Arroz Doce Integral de Coco e Laranja Caramelizada', 'duracaoreceita' => '60', 'duracaopreparacao' => '0', 'passos' => '<p>Coloque ao lume o arroz com o leite de coco, o extracto de baunilha e as raspas de laranja. Deixe cozinhar em lume baixo destapado, mexendo frequentemente, durante cerca de 15 minutos ou até o arroz absorver o leite de coco e obter uma cosistência cremosa.</p>
+        <p>Para as laranjas caramelizadas corte uma laranja em 8 rodelas.</p>
+        <p>Numa panela coloque o sumo da outra laranja e adicione o açúcar. Deixe cozinhar até ferver, sem mexer.</p>
+        <p>Quando começar a ferver, baixe o lume e mexa ocasionalmente até a mistura começar a ficar dourada e espessa. Retire do lume e adicione as rodelas de laranja. Deixe arrefecer.</p>
+        <p>Sirva o arroz doce com as laranjas caramelizadas. Polvilhe com canela e um fio de leite de coco. Se desejar mais doce adicione também um fio de mel.</p>
+        <p>Fonte: <a href="https://www.aldi.pt/receitas/Outra-Vez-Arroz/Arroz-Doce-Integral-de-Coco-e-Laranja-Caramelizada.html">https://www.aldi.pt/receitas/Outra-Vez-Arroz/Arroz-Doce-Integral-de-Coco-e-Laranja-Caramelizada.html</a></p>', 'idutilizador' => '1'));
 
-        $this->insert('receitas', array('idreceita' => '2', 'imagem' => 'https://via.placeholder.com/500x500?text=FoodMan', 'nome' => 'Sopa de Frango, Limão e Arroz', 'duracaoreceita' => '35', 'duracaopreparacao' => '5', 'passos' => 'Coloque o frango num tacho e cubra com o caldo de galinha. Adicione as folhas de louro e tempre com sal e pimenta. Deixe cozer durante cerca de 30 minutos. Quando cozido desfie o frango e reserve a água de cozedura.
-        Corte os legumes em rodelas. Coloque um generoso fio de Azeite Virgem Extra GUT BIO® numa panela grande e adicione a cebola, as cenouras, o aipo, o alho e o tomilho e deixe cozinhar por 5 minutos mexendo regularmente.
-        De seguida adicione o frango desfiado, o Arroz Vaporizado BOA NOVA e a água de cozedura do frango. Deixe cozinhar em lume baixo até o arroz estar cozido.
-        Por fim junte o sumo dos limões e tempere com sal e pimenta. Sirva de imediato com salsa picada por cima.
-        Fonte: https://www.aldi.pt/receitas/Outra-Vez-Arroz/Sopa-de-Frango-Limao-e-Arroz.html', 'idutilizador' => '1'));
+        $this->insert('receitas', array('idreceita' => '2', 'imagem' => 'https://via.placeholder.com/500x500?text=FoodMan', 'nome' => 'Sopa de Frango, Limão e Arroz', 'duracaoreceita' => '35', 'duracaopreparacao' => '5', 'passos' => '<p>Coloque o frango num tacho e cubra com o caldo de galinha. Adicione as folhas de louro e tempre com sal e pimenta. Deixe cozer durante cerca de 30 minutos. Quando cozido desfie o frango e reserve a água de cozedura.</p>
+        <p>Corte os legumes em rodelas. Coloque um generoso fio de Azeite Virgem Extra GUT BIO® numa panela grande e adicione a cebola, as cenouras, o aipo, o alho e o tomilho e deixe cozinhar por 5 minutos mexendo regularmente.</p>
+        <p>De seguida adicione o frango desfiado, o Arroz Vaporizado BOA NOVA e a água de cozedura do frango. Deixe cozinhar em lume baixo até o arroz estar cozido.</p>
+        <p>Por fim junte o sumo dos limões e tempere com sal e pimenta. Sirva de imediato com salsa picada por cima.</p>
+        <p>Fonte: <a href="https://www.aldi.pt/receitas/Outra-Vez-Arroz/Sopa-de-Frango-Limao-e-Arroz.html">https://www.aldi.pt/receitas/Outra-Vez-Arroz/Sopa-de-Frango-Limao-e-Arroz.html</a></p>', 'idutilizador' => '1'));
 
         //$this->insert('ingredientes', array('idingrediente' => '', 'nome' => '', 'quantnecessaria' => '', 'tipopreparacao' => '', 'idproduto' => '', 'idreceita' => ''));
         $this->insert('ingredientes', array('idingrediente' => '1', 'nome' => 'Arroz Integral', 'quantnecessaria' => '400', 'tipopreparacao' => '0', 'idproduto' => '9', 'idreceita' => '1'));

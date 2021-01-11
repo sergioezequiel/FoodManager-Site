@@ -27,13 +27,13 @@ $this->title = 'FoodManager';
                 <?php foreach ($ingredientes as $item) { ?>
                 <tr>
                     <td><?= Html::encode($item->nome) ?></td>
-                    <td><?= Html::encode($item->getQuantUnidade()) ?></td>
+                    <td><?= $item->quantnecessaria != 0 ? Html::encode($item->getQuantUnidade()) : '-' ?></td>
                     <td><?= Html::encode($item->getTipoTexto()) ?></td>
                 </tr>
                 <?php } ?>
             </table>
             <br><br>
-            <?= Html::encode($receita->passos) ?>
+            <?= $receita->passos ?>
         </div>
     </section>
 </main>
