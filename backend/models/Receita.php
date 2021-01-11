@@ -35,9 +35,9 @@ class Receita extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'duracaoreceita', 'duracaopreparacao', 'passos', 'idutilizador'], 'required'],
+            [['imagem', 'nome', 'duracaoreceita', 'duracaopreparacao', 'passos', 'idutilizador'], 'required'],
+            [['imagem', 'passos'], 'string'],
             [['duracaoreceita', 'duracaopreparacao', 'idutilizador'], 'integer'],
-            [['passos'], 'string'],
             [['nome'], 'string', 'max' => 45],
             [['idutilizador'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idutilizador' => 'id']],
         ];
@@ -50,6 +50,7 @@ class Receita extends \yii\db\ActiveRecord
     {
         return [
             'idreceita' => 'Idreceita',
+            'imagem' => 'Imagem',
             'nome' => 'Nome',
             'duracaoreceita' => 'Duracaoreceita',
             'duracaopreparacao' => 'Duracaopreparacao',

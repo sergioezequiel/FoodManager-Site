@@ -77,7 +77,7 @@ class MainCest
         $I->wait(2);
 
         $I->click('Send', '#send');
-
+        $I->wait(2);
     }
 
     public function checkLogin(AcceptanceTester $I)

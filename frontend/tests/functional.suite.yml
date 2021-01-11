@@ -1,6 +1,10 @@
 suite_namespace: frontend\tests\functional
 actor: FunctionalTester
 modules:
-    enabled:
-        - Filesystem
-        - Yii2
+  enabled:
+    - Filesystem
+    - Yii2
+    - Db:
+        dsn: 'mysql:host=localhost;port=3306;dbname=foodman_test;charset=utf8'
+        user: 'root'
+        password: ''

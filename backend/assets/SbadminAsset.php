@@ -15,6 +15,7 @@ class SbadminAsset extends AssetBundle
     ];
 
     public $js = [
+        'https://code.jquery.com/jquery-3.5.1.min.js',
         'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js',
         'https://cdn.jsdelivr.net/npm/sweetalert2@10',
         'js/scripts.js',

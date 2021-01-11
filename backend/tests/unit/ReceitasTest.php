@@ -40,6 +40,7 @@ class ReceitasTest extends Unit
         $receita->idreceita = 99;
         $receita->nome = 'Uma receita teste';
         $receita->duracaoreceita = 60;
+        $receita->imagem = 'https://mediadeumaimagem.com';
         $receita->duracaopreparacao = 40;
         $receita->passos = 'Alguns passos para a receita';
         $receita->idutilizador = 99;

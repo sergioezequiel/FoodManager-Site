@@ -36,8 +36,11 @@ class SiteController extends Controller
     }
 
     public function actionContactus() {
+        $model = new Feedback();
 
-        return $this->render('contactus');
+        return $this->render('contactus', [
+            'model' => $model,
+        ]);
     }
 
     public function actionLogin() {
