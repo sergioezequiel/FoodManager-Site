@@ -49,7 +49,6 @@ class m201116_160443_init_rbac extends Migration
         $auth->add($moderador);
         $auth->addChild($moderador,$delUser);
         $auth->addChild($moderador,$addEditor);
-        $auth->addChild($moderador, $gestor);
         $auth->addChild($moderador, $blockUser);
         $auth->addChild($moderador, $criarGestor);
 

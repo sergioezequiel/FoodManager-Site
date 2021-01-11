@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Codigo Barras';
+$this->title = 'Códigos Barras';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="codigo-barras-index">
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Codigo Barras', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Código Barras', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -23,11 +23,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'codigobarras',
+            [
+                'label' => 'Código Barras',
+                'attribute' => 'codigobarras'
+            ],
             'nome',
             'marca',
-            'quantidade',
-            'idproduto',
+            [
+                'label' => 'Quantidade',
+                'attribute' => 'quantidadecomunidade'
+            ],
+            [
+                'label' => 'Produto',
+                'attribute' => 'produtoname'
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

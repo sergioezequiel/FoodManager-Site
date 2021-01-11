@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Item Despensas';
+$this->title = 'Despensas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="item-despensa-index">
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Item Despensa', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Item Despensa', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -23,11 +23,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'iditemdespensa',
             'nome',
-            'quantidade',
+            [
+                'label' => 'Quantidade',
+                'attribute' => 'quantidadeunidade'
+            ],
             'validade',
-            'idproduto',
+            [
+                'label' => 'Produto',
+                'attribute' => 'produtoname'
+            ],
+            [
+                'label' => 'Utilizador',
+                'attribute' => 'usernamedespensa'
+            ],
             //'idutilizador',
 
             ['class' => 'yii\grid\ActionColumn'],

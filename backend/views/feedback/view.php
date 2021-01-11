@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Feedback */
 
 $this->title = $model->idfeedback;
-$this->params['breadcrumbs'][] = ['label' => 'Feedbacks', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Feedback', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idfeedback], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idfeedback], [
+        <?= Html::a('Editar', ['update', 'id' => $model->idfeedback], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->idfeedback], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Tem a certeza que pretende eliminar este item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,10 +29,33 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idfeedback',
+            [
+                'label' => 'ID Feedback',
+                'attribute' => 'idfeedback'
+            ],
+            'nome',
+            [
+                'label' => 'Assunto',
+                'attribute' => 'subjet'
+            ],
+            'email:email',
             'texto:ntext',
-            'tipo',
-            'idutilizador',
+            [
+                'label' => 'Tipo (num)',
+                'attribute' => 'tipo'
+            ],
+            [
+                'label' => 'Tipo',
+                'attribute' => 'nometipo'
+            ],
+            [
+                'label' => 'ID Utilizador',
+                'attribute' => 'idutilizador'
+            ],
+            [
+                'label' => 'Utilizador',
+                'attribute' => 'usernamefeedback'
+            ],
         ],
     ]) ?>
 

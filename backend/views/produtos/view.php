@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Produto */
 
-$this->title = $model->idproduto;
+$this->title = $model->nome;
 $this->params['breadcrumbs'][] = ['label' => 'Produtos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idproduto], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idproduto], [
+        <?= Html::a('Editar', ['update', 'id' => $model->idproduto], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->idproduto], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Tem a certeza que pretende eliminar este item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,11 +29,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idproduto',
+            [
+                'label' => 'ID Produto',
+                'attribute' => 'idproduto'
+            ],
             'nome',
             'unidade',
             'imagem:ntext',
-            'idcategoria',
+            [
+                'label' => 'ID Categoria',
+                'attribute' => 'idcategoria'
+            ],
+            [
+                'label' => 'Categoria',
+                'attribute' => 'categorianame'
+            ],
         ],
     ]) ?>
 

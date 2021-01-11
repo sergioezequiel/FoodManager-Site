@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Receita */
 
-$this->title = $model->idreceita;
+$this->title = $model->nome;
 $this->params['breadcrumbs'][] = ['label' => 'Receitas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idreceita], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idreceita], [
+        <?= Html::a('Editar', ['update', 'id' => $model->idreceita], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->idreceita], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Tem a certeza que pretende eliminar este item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,12 +29,29 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idreceita',
+            [
+                'label' => 'ID Receita',
+                'attribute' => 'idreceita'
+            ],
+            'imagem:ntext',
             'nome',
-            'duracaoreceita',
-            'duracaopreparacao',
+            [
+                'label' => 'Duração da Receita',
+                'attribute' => 'duracaoreceitamin'
+            ],
+            [
+                'label' => 'Duração da Preparação',
+                'attribute' => 'duracaopreparacaomin'
+            ],
             'passos:ntext',
-            'idutilizador',
+            [
+                'label' => 'ID Utilizador',
+                'attribute' => 'idutilizador'
+            ],
+            [
+                'label' => 'Utilizador',
+                'attribute' => 'usernamereceita'
+            ],
         ],
     ]) ?>
 

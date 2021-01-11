@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Receita;
+use app\models\Feedback;
 
 /**
- * ReceitaSearch represents the model behind the search form of `app\models\Receita`.
+ * FeedbackSearch represents the model behind the search form of `app\models\Feedback`.
  */
-class ReceitaSearch extends Receita
+class FeedbackSearch extends Feedback
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class ReceitaSearch extends Receita
     public function rules()
     {
         return [
-            [['idreceita', 'duracaoreceita', 'duracaopreparacao', 'idutilizador'], 'integer'],
-            [['imagem', 'nome', 'passos'], 'safe'],
+            [['idfeedback', 'tipo', 'idutilizador'], 'integer'],
+            [['nome', 'subjet', 'email', 'texto'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ReceitaSearch extends Receita
      */
     public function search($params)
     {
-        $query = Receita::find();
+        $query = Feedback::find();
 
         // add conditions that should always apply here
 
@@ -58,15 +58,15 @@ class ReceitaSearch extends Receita
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idreceita' => $this->idreceita,
-            'duracaoreceita' => $this->duracaoreceita,
-            'duracaopreparacao' => $this->duracaopreparacao,
+            'idfeedback' => $this->idfeedback,
+            'tipo' => $this->tipo,
             'idutilizador' => $this->idutilizador,
         ]);
 
-        $query->andFilterWhere(['like', 'imagem', $this->imagem])
-            ->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'passos', $this->passos]);
+        $query->andFilterWhere(['like', 'nome', $this->nome])
+            ->andFilterWhere(['like', 'subjet', $this->subjet])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'texto', $this->texto]);
 
         return $dataProvider;
     }

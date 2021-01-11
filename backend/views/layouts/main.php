@@ -26,7 +26,7 @@ use common\widgets\Alert;
 
 <div>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="<?= Url::toRoute('site/index') ?>">Foodman</a>
+        <a class="navbar-brand" style="padding: 0px;" href="<?= Url::toRoute('site/index') ?>">Foodman</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto">
@@ -47,7 +47,7 @@ use common\widgets\Alert;
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <div class="sb-sidenav-menu-heading">FoodManager</div>
                         <a class="nav-link" href="<?= Url::toRoute('site/index') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                             Início
@@ -93,7 +93,7 @@ use common\widgets\Alert;
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Login feito como:</div>
-                    <?= isset($this->params['username']) ? $this->params['username'] : 'SEM LOGIN EFETUADO' ?>
+                    <?= isset($this->params['username']) ? Html::encode($this->params['username']) : 'SEM LOGIN EFETUADO' ?>
                 </div>
             </nav>
         </div>
@@ -101,6 +101,7 @@ use common\widgets\Alert;
             <div class="container-fluid">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    'options' => ['style' => 'margin-top: 20px;']
                 ]) ?>
                 <?= Alert::widget() ?>
                 <?= $content ?>

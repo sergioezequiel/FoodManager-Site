@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Produto', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Produto', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -23,11 +23,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idproduto',
+            [
+                'label' => 'ID Produto',
+                'attribute' => 'idproduto',
+                'contentOptions' => ['style' => 'width: auto;']
+            ],
             'nome',
             'unidade',
-            'imagem:ntext',
-            'idcategoria',
+            [
+                'attribute' => 'imagem',
+                'contentOptions' => ['style' => 'max-width: 200px !important;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;']
+            ],
+            [
+                'label' => 'Categoria',
+                'attribute' => 'categorianame'
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

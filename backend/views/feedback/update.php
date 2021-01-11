@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Feedback */
 
-$this->title = 'Update Feedback: ' . $model->idfeedback;
-$this->params['breadcrumbs'][] = ['label' => 'Feedbacks', 'url' => ['index']];
+$this->title = 'Editar Feedback: ' . $model->idfeedback;
+$this->params['breadcrumbs'][] = ['label' => 'Feedback', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->idfeedback, 'url' => ['view', 'id' => $model->idfeedback]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

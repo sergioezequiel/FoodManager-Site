@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Bluerhinos\phpMQTT;
 use common\models\User;
 use Yii;
 
@@ -10,14 +9,15 @@ use Yii;
  * This is the model class for table "receitas".
  *
  * @property int $idreceita
+ * @property string $imagem
  * @property string $nome
  * @property int $duracaoreceita
  * @property int $duracaopreparacao
  * @property string $passos
  * @property int $idutilizador
  *
- * @property Ingrediente[] $ingredientes
  * @property User $idutilizador0
+ * @property Ingrediente[] $ingredientes
  */
 class Receita extends \yii\db\ActiveRecord
 {
@@ -60,16 +60,6 @@ class Receita extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Ingredientes]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getIngredientes()
-    {
-        return $this->hasMany(Ingrediente::className(), ['idreceita' => 'idreceita']);
-    }
-
-    /**
      * Gets query for [[Idutilizador0]].
      *
      * @return \yii\db\ActiveQuery
@@ -79,25 +69,25 @@ class Receita extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'idutilizador']);
     }
 
-    public function afterSave($insert, $changedAttributes)
+    /**
+     * Gets query for [[Ingredientes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIngredientes()
     {
-        parent::afterSave($insert, $changedAttributes);
-
-        $nome = $this->nome;
-
-        $this->publishMosquittto("geral", "Nova receita adicionada! ".$nome);
+        return $this->hasMany(Ingrediente::className(), ['idreceita' => 'idreceita']);
     }
 
-    public function publishMosquittto($canal, $msg) {
-        $server = "127.0.0.1";
-        $port = 1883;
-        $username = "";
-        $password = "";
-        $client_id = "akwduaiwidawhihawifiau";
-        $mqtt = new phpMQTT($server, $port, $client_id);
-        if($mqtt->connect(true, null, $username, $password)) {
-            $mqtt->publish($canal, $msg, 0);
-            $mqtt->close();
-        }
+    public function getUsernameReceita() {
+        return $this->idutilizador0->username;
+    }
+
+    public function getDuracaoReceitaMin() {
+        return $this->duracaoreceita.' min';
+    }
+
+    public function getDuracaoPreparacaoMin() {
+        return $this->duracaopreparacao.' min';
     }
 }

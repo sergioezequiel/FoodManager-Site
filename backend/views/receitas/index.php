@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Receita', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Receita', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,19 +26,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            'idreceita',
             'nome',
             [
                 'label' => 'Duração da Receita',
-                'attribute' => 'duracaoreceita'
+                'attribute' => 'duracaoreceitamin'
             ],
             [
                 'label' => 'Duração da Preparação',
-                'attribute' => 'duracaopreparacao'
+                'attribute' => 'duracaopreparacaomin'
             ],
-            'passos:ntext',
-            //'idutilizador',
+            //'passos:ntext',
+            [
+                'label' => 'Utilizador',
+                'attribute' => 'usernamereceita'
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete} {ingredientes}',
+                'buttons' => [
+                    'ingredientes' => function($url, $model, $key) {
+                        return Html::a('', \yii\helpers\Url::toRoute('ingredientes/index?receita='.$model->idreceita), ['class' => 'fas fa-carrot']);
+                    }
+                ]
+            ],
         ],
     ]); ?>
 

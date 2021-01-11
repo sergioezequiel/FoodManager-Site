@@ -96,4 +96,8 @@ class Produto extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Categoria::className(), ['idcategoria' => 'idcategoria']);
     }
+
+    public function getCategoriaName() {
+        return $this->idcategoria0->nome;
+    }
 }

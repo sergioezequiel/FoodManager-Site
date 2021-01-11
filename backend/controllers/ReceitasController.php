@@ -5,7 +5,6 @@ namespace backend\controllers;
 use Yii;
 use app\models\Receita;
 use app\models\ReceitaSearch;
-use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,16 +20,6 @@ class ReceitasController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['index','delete','create','update','view'],
-                        'roles' => ['editor', 'admin']
-                    ],
-                ]
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

@@ -14,13 +14,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'quantnecessaria')->textInput() ?>
+    <?= $form->field($model, 'quantnecessaria')->textInput()->label('Quantidade Necessária') ?>
 
-    <?= $form->field($model, 'tipopreparacao')->textInput() ?>
+    <?= $form->field($model, 'tipopreparacao')->textInput()->label('Tipo de Preparação') ?>
 
-    <?= $form->field($model, 'idproduto')->textInput() ?>
+    <?= $form->field($model, 'idproduto')->textInput()->label('ID Produto') ?>
 
-    <?= $form->field($model, 'idreceita')->textInput() ?>
+    <?= isset($receita) ? $form->field($model, 'idreceita')->textInput(['value' => $receita, 'readonly' => 'readonly'])->label('ID Receita') : $form->field($model, 'idreceita')->textInput()->label('ID Receita') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
