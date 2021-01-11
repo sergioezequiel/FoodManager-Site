@@ -1,14 +1,14 @@
 <?php
 
+use yii\helpers\Html;
+use yii\grid\GridView;
+
 /* @var $this yii\web\View */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
-use yii\helpers\Url;
-
-$assets = \backend\assets\SbadminAsset::register($this);
 $this->title = 'FoodManager';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<main>
-    <h1> parabens deu login</h1>
-    <a href="<?=Url::toRoute('user/index')?>">aceder a pagina</a>
-</main>
+<div>
+    <h1><?= Html::encode($this->title) ?></h1>
+</div>

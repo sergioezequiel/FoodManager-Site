@@ -48,7 +48,7 @@ class ProdutosController extends Controller
             return parent::beforeAction($action);
         }
 
-        $user = \common\models\User::find()->andWhere(Yii::$app->user->id)->one();
+        $user = \common\models\User::find()->where('id='.Yii::$app->user->getId())->one();
         $this->view->params['username'] = $user->username;
 
         return parent::beforeAction($action);
