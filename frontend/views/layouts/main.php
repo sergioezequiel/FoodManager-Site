@@ -32,10 +32,16 @@ FoodmanAsset::register($this);
                  id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/index')?>">Home</a></li>
-                    <li class="nav-item"><a id="about" class="nav-link" href="<?=Url::toRoute('site/aboutus')?>">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/receita')?>">Receitas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/aboutus')?>">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/faq')?>">Faq</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/contactus')?>">Contact Us</a></li>
+                    <?php if(!Yii::$app->user->isGuest) { ?>
+                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/itemdespensa')?>">Despensa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/logout')?>">Logout</a></li>
+                    <?php } else { ?>
                     <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/login')?>">Login</a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>

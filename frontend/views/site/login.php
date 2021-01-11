@@ -2,13 +2,10 @@
 
 /* @var $this yii\web\View */
 
-/* @var $model \app\models\User */
+use yii\helpers\Html;
+use yii\helpers\Url;
 
-use frontend\assets\FoodmanAsset;
-use yii\bootstrap4\ActiveForm;
-use yii\bootstrap4\Html;
-
-$assets = FoodmanAsset::register($this);
+$assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>
 <main class="page login-page">
@@ -18,24 +15,26 @@ $this->title = 'FoodManager';
                 <h2 class="text-info">Log In</h2>
                 <p>Faça o seu login:</p>
             </div>
-            <?php $form = ActiveForm::begin(['id' => 'login']); ?>
-            <div class="form-group">
-                <?= $form->field($model, 'email')->input('email', ['id' => 'email', 'className' => 'form-control']) ?>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input class="form-control" type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="checkbox" name="remember">
-                    <label class="form-check-label" for="checkbox">Remember me</label>
+            <form action="<?= Url::toRoute('site/login') ?>" method="post">
+                <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input class="form-control item" type="text" name="LoginForm[username]" id="username" <?= isset($model) ? 'value='.Html::encode($model->username) : '' ?>>
                 </div>
-            </div>
-            <div class="form-group">
-                <?= Html::submitButton('Log In', ['class' => 'btn btn-primary btn-block', 'name' => 'contact-button']) ?>
-            </div>
-            <?php ActiveForm::end(); ?>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" type="password" name="LoginForm[password]" id="password">
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <label class="form-check-label" for="checkbox">Remember me</label>
+                        <input class="form-check-input" type="checkbox" name="LoginForm[rememberMe]" id="checkbox">
+                    </div>
+                </div>
+                <input class="btn btn-primary btn-block" type="submit" value="Log In"/>
+                <a class="btn btn-primary btn-block" href="<?= Url::toRoute('site/signup'); ?>">Criar conta</a>
+            </form>
+
         </div>
     </section>
 </main>

@@ -29,5 +29,6 @@ class FoodmanAsset extends AssetBundle
 
     public $depends = [
         'frontend\assets\AppAsset',
+        'rmrevin\yii\fontawesome\CdnFreeAssetBundle'
     ];
 }
