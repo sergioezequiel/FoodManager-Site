@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\controllers;
 
 use app\models\Feedback;
@@ -7,6 +8,7 @@ use app\models\Itensdespensa;
 use app\models\Receita;
 use app\models\Receitas;
 use frontend\models\ResendVerificationEmailForm;
+use frontend\models\SignupForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
@@ -15,15 +17,12 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
 /**
  * Site controller
  */
-
 class SiteController extends Controller
 {
     public function actions()
@@ -37,18 +36,22 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        ///  Yii::$app->assetManager->forceCopy = true;
         return $this->render('index');
     }
 
-    public function actionAboutus() {
+    public function actionAboutus()
+    {
         return $this->render('aboutus');
     }
 
-    public function actionFaq() {
+    public function actionFaq()
+    {
         return $this->render('faq');
     }
 
-    public function actionContactus() {
+    public function actionContactus()
+    {
         $model = new Feedback();
 
         if ($model->load(Yii::$app->request->post())) {
@@ -63,7 +66,8 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionLogin() {
+    public function actionLogin()
+    {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -93,17 +97,20 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionReceita() {
+    public function actionReceita()
+    {
         $receitas = Receita::find()->all();
-        return $this->render('receita',['receitas'=>$receitas]);
+        return $this->render('receita', ['receitas' => $receitas]);
     }
 
-    public function actionItemdespensa() {
+    public function actionItemdespensa()
+    {
         $despensa = Itensdespensa::find()->andWhere(['idutilizador' => Yii::$app->user->id])->all();
-        return $this->render('itemdespensa',['despensa'=>$despensa]);
+        return $this->render('itemdespensa', ['despensa' => $despensa]);
     }
 
-    public function actionIngredientes($receita) {
+    public function actionIngredientes($receita)
+    {
         {
             return $this->render('ingredientes', [
                 'ingredientes' => Ingrediente::find()->andWhere(['idreceita' => $receita])->all(),
