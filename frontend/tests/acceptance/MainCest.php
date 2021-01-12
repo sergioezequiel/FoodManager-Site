@@ -110,7 +110,16 @@ class MainCest
         //$I->checkOption('#login input[name=remember] ');
         $I->wait(2);
         $I->click('Log In', '#login');
-        $I->see('Logout');
+
+        $I->wait(2);
+        try {
+            $I->see('Logout');
+        } catch (\Exception $e) {
+            $I->click(['class' => 'navbar-toggler']);
+            $I->wait(2);
+            $I->see('Logout');
+        }
+
         $I->wait(2);
 
         //$I->seeCurrentUrlEquals('/index-test.php/site/login');
