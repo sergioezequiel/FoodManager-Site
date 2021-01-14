@@ -74,6 +74,9 @@
 >-> **Sérgio Ezequiel 2190710**  
 >-> **Vladyslav Bobko 2190749**
  
+## Login Default
+>->Username: admin  
+>->Password: uwuowo123
 
 ## Escola de trabalho
 
