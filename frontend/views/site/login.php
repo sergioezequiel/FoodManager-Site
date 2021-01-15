@@ -2,7 +2,10 @@
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
+/* @var $model \app\models\LoginForm */
+
+use yii\bootstrap4\ActiveForm;
+use yii\bootstrap4\Html;
 use yii\helpers\Url;
 
 $assets = \frontend\assets\FoodmanAsset::register($this);
@@ -15,26 +18,22 @@ $this->title = 'FoodManager';
                 <h2 class="text-info">Log In</h2>
                 <p>Faça o seu login:</p>
             </div>
-            <form id="login" action="<?= Url::toRoute('site/login') ?>" method="post">
-                <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input class="form-control item" type="text" name="LoginForm[username]" id="username" <?= isset($model) ? 'value='.Html::encode($model->username) : '' ?>>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input class="form-control" type="password" name="LoginForm[password]" id="password">
-                </div>
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="LoginForm[rememberMe]" id="checkbox">
-                        <label class="form-check-label" for="checkbox">Remember me</label>
-                    </div>
-                </div>
-                <input class="btn btn-primary btn-block" type="submit" value="Log In"/>
-                <a class="btn btn-primary btn-block" href="<?= Url::toRoute('site/signup'); ?>">Criar conta</a>
-            </form>
+            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+            <div class="form-group">
+                <?= $form->field($model, 'username')->textInput(['id' => 'username', 'autofocus' => true, 'className' => 'form-control']) ?>
+            </div>
 
+            <div class="form-group">
+                <?= $form->field($model, 'password')->passwordInput(['id' => 'password', 'className' => 'form-control']) ?>
+            </div>
+            <div class="form-group">
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+            </div>
+            <div class="form-group">
+                <?= Html::submitButton('Log In', ['class' => 'btn btn-primary btn-block', 'name' => 'signup-button']) ?>
+                <a class="btn btn-primary btn-block" href="<?= Url::toRoute('site/signup'); ?>">Criar conta</a>
+            </div>
+            <?php ActiveForm::end(); ?>
         </div>
     </section>
 </main>
