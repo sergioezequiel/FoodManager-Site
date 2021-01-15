@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Bluerhinos\phpMQTT;
 use common\models\User;
 use Yii;
 
@@ -89,5 +90,27 @@ class Receita extends \yii\db\ActiveRecord
 
     public function getDuracaoPreparacaoMin() {
         return $this->duracaopreparacao.' min';
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        $nome = $this->nome;
+
+        $this->publishMosquittto("geral", "Nova receita adicionada! ".$nome);
+    }
+
+    public function publishMosquittto($canal, $msg) {
+        $server = "127.0.0.1";
+        $port = 1883;
+        $username = "";
+        $password = "";
+        $client_id = "akwduaiwidawhihawifiau";
+        $mqtt = new phpMQTT($server, $port, $client_id);
+        if($mqtt->connect(true, null, $username, $password)) {
+            $mqtt->publish($canal, $msg, 0);
+            $mqtt->close();
+        }
     }
 }
