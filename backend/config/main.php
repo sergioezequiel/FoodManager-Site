@@ -60,6 +60,7 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/codigosbarras',
                     'pluralize' => false,
+                    'extraPatterns' => ['GET codigocomimagem/<codigo:\d+>' => 'codigocomimagem']
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',

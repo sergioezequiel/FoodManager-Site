@@ -45,7 +45,14 @@ class ItensdespensaController extends \yii\rest\ActiveController
 
         if($item->validate()) {
             $item->save();
-            return $item;
+
+            $query = new Query();
+
+            return $query->select('i.iditemdespensa, i.nome, i.quantidade, i.validade, p.imagem, p.unidade')
+                ->from('itensdespensa i')
+                ->innerJoin('produtos p', 'i.idproduto = p.idproduto')
+                ->andWhere(['i.iditemdespensa' => $item->iditemdespensa])
+                ->one();
         }
         else {
             Yii::$app->response->statusCode = 422;
