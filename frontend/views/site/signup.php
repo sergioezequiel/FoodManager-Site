@@ -34,8 +34,9 @@ $this->title = 'Signup';
             </div>
             <div class="form-group">
                 <?= Html::submitButton('Signup', ['class' => 'btn btn-primary btn-block', 'name' => 'signup-button']) ?>
-                <a class="btn btn-primary btn-block" href="<?= Url::toRoute('site/login'); ?>">Criar conta</a>
+                <a class="btn btn-primary btn-block" href="<?= Url::toRoute('site/login'); ?>">Login</a>
             </div>
             <?php ActiveForm::end(); ?>
+        </div>
     </section>
 </main>

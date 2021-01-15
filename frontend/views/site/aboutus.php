@@ -16,29 +16,26 @@ $this->title = 'FoodManager';
             </div>
             <div class="row justify-content-center">
                 <div class="col-sm-6 col-lg-4">
-                    <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="<?= $assets->baseUrl ?>/assets/img/avatars/Serjux_aka_look_into_my_soul_JK_IDH_A_SOUL.png">
+                    <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="<?= $assets->baseUrl ?>/assets/img/avatars/Sergio.png">
                         <div class="card-body info">
-                            <h4 class="card-title">Sérgio Ezequiel</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="icons"><a href="https://www.instagram.com/serjuxlol"><i class="icon-social-instagram"></i></i></a></div>
+                            <h4 class="card-title" style="display: inline-block">Sérgio Ezequiel</h4>
+                            <div class="icons" style="display: inline-block"><a href="https://www.instagram.com/serjuxlol"><i class="icon-social-instagram"></i></i></a></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
-                    <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="<?= $assets->baseUrl ?>/assets/img/avatars/94d99465-b114-43ee-bd7d-c0cb99c9e65c.jpeg">
+                    <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="<?= $assets->baseUrl ?>/assets/img/avatars/Alex.png">
                         <div class="card-body info">
-                            <h4 class="card-title">Alexandre Bértolo</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="icons"><a href='https://www.instagram.com/alexscorpion100/'?><i class="icon-social-instagram"></i></a></i></a></div>
+                            <h4 class="card-title" style="display: inline-block">Alexandre Bértolo</h4>
+                            <div class="icons" style="display: inline-block"><a href='https://www.instagram.com/alexscorpion100/'?><i class="icon-social-instagram"></i></a></i></a></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="<?= $assets->baseUrl ?>/assets/img/avatars/Vlad.png">
                         <div class="card-body info">
-                            <h4 class="card-title">Vladyslav Bobko</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="icons"><a href="https://www.instagram.com/deep_as_a_sheep"><i class="icon-social-instagram"></i></a></div>
+                            <h4 class="card-title" style="display: inline-block">Vladyslav Bobko</h4>
+                            <div class="icons" style="display: inline-block"><a href="https://www.instagram.com/deep_as_a_sheep"><i class="icon-social-instagram"></i></a></div>
                         </div>
                     </div>
                 </div>
