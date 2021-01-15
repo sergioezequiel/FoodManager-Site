@@ -2,35 +2,40 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
+
 /* @var $model \frontend\models\SignupForm */
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap4\ActiveForm;
+use yii\bootstrap4\Html;
+use yii\helpers\Url;
 
+$assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'Signup';
-$this->params['breadcrumbs'][] = $this->title;
+
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
-</br>
-<div align="center">
-    <h1><?= Html::encode($this->title) ?></h1>
+<main class="page login-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info"><?= Html::encode($this->title) ?></h2>
+                <p>Preencha os campos abaixo para se registar.</p>
+            </div>
 
-    <p>Please fill out the following fields to signup:</p>
-
-    <div class="row-cols-sm-1">
-        <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-                <?= $form->field($model, 'email') ?>
-
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                </div>
-
+            <div class="form-group">
+                <?= $form->field($model, 'username')->textInput(['id' => 'username', 'autofocus' => true, 'className' => 'form-control']) ?>
+            </div>
+            <div class="form-group">
+                <?= $form->field($model, 'email')->input('email', ['id' => 'email', 'className' => 'form-control']) ?>
+            </div>
+            <div class="form-group">
+                <?= $form->field($model, 'password')->passwordInput(['id' => 'password', 'className' => 'form-control']) ?>
+            </div>
+            <div class="form-group">
+                <?= Html::submitButton('Signup', ['class' => 'btn btn-primary btn-block', 'name' => 'signup-button']) ?>
+                <a class="btn btn-primary btn-block" href="<?= Url::toRoute('site/login'); ?>">Criar conta</a>
+            </div>
             <?php ActiveForm::end(); ?>
-        </div>
-    </div>
-</div>
+    </section>
+</main>

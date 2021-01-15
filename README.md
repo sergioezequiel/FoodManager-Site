@@ -69,14 +69,14 @@
 - ### Terminal 4
 >mosquitto_sub -v -t geral
 
+## Login Default
+>->Username: admin  
+>->Password: uwuowo123
+
 ## Equipa que desenvolveu FoodMan
 >-> **Alexandre Bértolo 2190754**  
 >-> **Sérgio Ezequiel 2190710**  
 >-> **Vladyslav Bobko 2190749**
- 
-## Login Default
->->Username: admin  
->->Password: uwuowo123
 
 ## Escola de trabalho
 
