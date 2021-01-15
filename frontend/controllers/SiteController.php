@@ -42,6 +42,7 @@ class SiteController extends Controller
 
     public function actionAboutus()
     {
+
         return $this->render('aboutus');
     }
 

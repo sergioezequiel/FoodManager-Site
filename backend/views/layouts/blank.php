@@ -6,6 +6,7 @@ use backend\assets\AppAsset;
 use yii\helpers\Html;
 
 AppAsset::register($this);
+$assets = \backend\assets\ImgAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,6 +20,8 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body class="blank">
+<img src="<?= $assets->baseUrl ?>/assets/img/food-porn-pizza.jpg" style="position: fixed; z-index: -1; top: 0; filter: blur(8px);
+  -webkit-filter: blur(8px);"/>
 <?php $this->beginBody() ?>
 
 <div class="container">
