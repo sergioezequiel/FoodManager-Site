@@ -64,8 +64,9 @@ return [
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/produto',
+                    'controller' => 'api/produtos',
                     'pluralize' => false,
+                    'extraPatterns' => ['GET pelacategoria/<categoria:\w+>' => 'pelacategoria']
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
