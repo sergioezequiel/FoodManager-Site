@@ -89,7 +89,8 @@ return [
                         [
                             'GET containingredientes/<apikey:\w+>' => 'containingredientes',
                             'GET receitadispo/<apikey:\w+>' => 'receitadispo',
-                            'GET ingredientesemfalta/<apikey:\w+>' => 'ingredientesemfalta'
+                            'GET ingredientesemfalta/<apikey:\w+>' => 'ingredientesemfalta',
+                            'GET ingredientescorretos/<apikey:\w+>' => 'ingredientescorretos'
                         ],
                 ],
                 [
