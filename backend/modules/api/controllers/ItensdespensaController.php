@@ -67,6 +67,6 @@ class ItensdespensaController extends \yii\rest\ActiveController
             return null;
         }
 
-        return ItemDespensa::find()->andWhere(['idutilizador' => User::findIdentityByAccessToken($apikey)->getId()])->count();
+        return ['contagem' => ItemDespensa::find()->andWhere(['idutilizador' => User::findIdentityByAccessToken($apikey)->getId()])->count()];
     }
 }

@@ -12,4 +12,13 @@ use yii\rest\ActiveController;
 class ReceitasController extends ActiveController
 {
     public $modelClass = Receita::class;
+
+    public function actionCount($apikey) {
+        if(User::findIdentityByAccessToken($apikey) == null) {
+            Yii::$app->response->statusCode = 401;
+            return null;
+        }
+
+        return ['contagem' => Receita::find()->andWhere(['idutilizador' => User::findIdentityByAccessToken($apikey)->getId()])->count()];
+    }
 }

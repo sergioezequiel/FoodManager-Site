@@ -5,6 +5,7 @@ namespace app\modules\api\controllers;
 
 
 use common\models\User;
+use Yii;
 use yii\rest\ActiveController;
 
 class UserController extends ActiveController
@@ -27,5 +28,14 @@ class UserController extends ActiveController
             \Yii::$app->response->statusCode = 404;
             return ['success' => false];
         }
+    }
+
+    public function actionStats($apikey) {
+        if(User::findIdentityByAccessToken($apikey) == null) {
+            Yii::$app->response->statusCode = 401;
+            return null;
+        }
+
+        return User::find()->select('created_at, status')->andWhere(['auth_key' => $apikey])->one();
     }
 }

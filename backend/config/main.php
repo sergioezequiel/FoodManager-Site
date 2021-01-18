@@ -72,8 +72,8 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/user',
                     'pluralize' => false,
-                    'only' => ['login'],
-                    'extraPatterns' => ['POST login' => 'login',]
+                    'only' => ['login', 'stats'],
+                    'extraPatterns' => ['POST login' => 'login', 'GET stats/<apikey:\w+>' => 'stats']
                 ],
                 [
                     'class' => UrlRule::class,
@@ -97,6 +97,7 @@ return [
                     'class' => UrlRule::class,
                     'controller' => 'api/receitas',
                     'pluralize' => false,
+                    'extraPatterns' => ['GET count/<apikey:\w+>' => 'count']
                 ],
                 [
                     'class' => UrlRule::class,
