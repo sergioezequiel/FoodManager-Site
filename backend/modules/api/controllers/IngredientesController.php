@@ -59,10 +59,11 @@ class IngredientesController extends ActiveController
         }
         $query = new Query();
 
-        $query->select('*')
-        ->from('ingredientes')
-        ->andWhere(['ingredientes.idreceita' => $receita])
-        ->andWhere(['not in','ingredientes.idproduto', (new Query())->select('idproduto')->from('itensdespensa')->andWhere(['idutilizador' => User::findIdentityByAccessToken($apikey)->getId()])]);
+        $query->select('i.idingrediente, i.nome, CONCAT(i.quantnecessaria, space(1), `p`.`unidade`) as quantstring, i.quantnecessaria, i.tipopreparacao, i.idproduto, i.idreceita')
+            ->from('ingredientes i')
+            ->innerJoin('produtos p', 'i.idproduto = p.idproduto')
+            ->andWhere(['i.idreceita' => $receita])
+            ->andWhere(['not in','i.idproduto', (new Query())->select('idproduto')->from('itensdespensa')->andWhere(['idutilizador' => User::findIdentityByAccessToken($apikey)->getId()])]);
 
         if(!empty($query->all())) {
             return $query->all();
@@ -81,10 +82,11 @@ class IngredientesController extends ActiveController
         }
         $query = new Query();
 
-        return $query->select('*')
-            ->from('ingredientes')
-            ->andWhere(['ingredientes.idreceita' => $receita])
-            ->andWhere(['in','ingredientes.idproduto', (new Query())->select('idproduto')->from('itensdespensa')->andWhere(['idutilizador' => User::findIdentityByAccessToken($apikey)->getId()])])
+        return $query->select('i.idingrediente, i.nome, CONCAT(i.quantnecessaria, space(1), `p`.`unidade`) as quantstring, i.quantnecessaria, i.tipopreparacao, i.idproduto, i.idreceita')
+            ->from('ingredientes i')
+            ->innerJoin('produtos p', 'i.idproduto = p.idproduto')
+            ->andWhere(['i.idreceita' => $receita])
+            ->andWhere(['in','i.idproduto', (new Query())->select('idproduto')->from('itensdespensa')->andWhere(['idutilizador' => User::findIdentityByAccessToken($apikey)->getId()])])
             ->all();
     }
 }
