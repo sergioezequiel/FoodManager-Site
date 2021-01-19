@@ -3,22 +3,19 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
+use common\models\User;
+use common\models\Feedback;
 
-/**
- * This is the model class for table "feedback".
- *
- * @property int $idfeedback
- * @property string $nome
- * @property string $subjet
- * @property string $email
- * @property string $texto
- * @property int $tipo
- * @property int $idutilizador
- *
- * @property User $idutilizador0
- */
-class Feedback extends \yii\db\ActiveRecord
+class FeedbackForm extends ActiveRecord
 {
+    public $nome;
+    public $tipo;
+    public $subjet;
+    public $assunto;
+    public $email;
+    public $texto;
+
     /**
      * {@inheritdoc}
      */
@@ -33,7 +30,7 @@ class Feedback extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome','subjet', 'email', 'texto', 'tipo', 'idutilizador'], 'required'],
+            [['nome', 'subjet', 'email', 'texto', 'tipo', 'idutilizador'], 'required'],
             [['texto'], 'string'],
             [['tipo', 'idutilizador'], 'integer'],
             [['nome', 'subjet', 'email'], 'string', 'max' => 255],
@@ -56,6 +53,32 @@ class Feedback extends \yii\db\ActiveRecord
             'idutilizador' => 'Idutilizador',
         ];
     }
+
+    public function submit()
+    {
+        if (!$this->validate()) {
+            return null;
+        }
+
+        $feedback = new Feedback();
+        $feedback->nome = '$this->nome';
+        $feedback->tipo = 2;
+        $feedback->subjet = '$this->assunto';
+        $feedback->email = '$this->email';
+        $feedback->texto = '$this->texto';
+        $feedback->idutilizador = 1;
+
+        if ($feedback->save()) {
+            $auth = Yii::$app->authManager;
+            $userRole = $auth->getRole('user');
+            $auth->assign($userRole, $this->getIdutilizador0());
+
+            return true;
+        }
+
+        return false;
+    }
+
 
     /**
      * Gets query for [[Idutilizador0]].

@@ -11,8 +11,8 @@ $this->title = 'FoodManager';
     <section class="clean-block clean-faq dark">
         <div class="container">
             <div class="block-heading">
-                <h2 class="text-info">Receitas</h2>
-                <p>Estas são as receitas disponiveis</p>
+                <h2 class="text-info">404</h2>
+                <p>UPS! Não encontramos a página desejada. Porfavor tente mais tarde.</p>
             </div>
             <div class="alert alert-danger">
                 <?= nl2br(Html::encode($message)) ?>

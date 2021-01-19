@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use app\models\Feedback;
+use app\models\FeedbackForm;
 use app\models\Ingrediente;
 use app\models\Itensdespensa;
 use app\models\Receita;
@@ -36,7 +37,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        ///  Yii::$app->assetManager->forceCopy = true;
+      Yii::$app->assetManager->forceCopy = true;
         return $this->render('index');
     }
 
@@ -53,12 +54,12 @@ class SiteController extends Controller
 
     public function actionContactus()
     {
-        $model = new Feedback();
+        $model = new FeedbackForm();
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && $model->submit()) {
             if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
+                Yii::$app->session->setFlash('success', 'Thank you for your feedback.');
+                return $this->goHome();
             }
         }
 

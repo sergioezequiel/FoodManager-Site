@@ -6,41 +6,80 @@ $assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>
 <main class="page landing-page">
-    <section class="clean-block clean-hero" style="color: rgba(15,16,17,0.85);background: url(&quot;<?= $assets->baseUrl ?>/assets/img/main_page.jpg&quot;), #141111;border-color: rgba(18,21,23,0.85);">
+    <section class="clean-block clean-hero"
+             style="color: rgba(15,16,17,0.85);background: url(&quot;<?= $assets->baseUrl ?>/assets/img/main_page.jpg&quot;), #141111;border-color: rgba(18,21,23,0.85);">
         <div class="text">
-            <h2><br>A sua refeição é a nossa preocupação<br></h2>
-            <p><br>Quantas vezes já desistiu de realizar o seu jantar ou almoço pela única e simples razão<br>da preguiça de pensar no que cozinhar? Em vez de ter uma alimentação saudável,<br>sentamos no sofá a comer “snacks”. Com esta app, jamais terá
-                que pensar no que<br>cozinhar, a app pensa por si e mostra as<br>receitas que prefere, porque a nossa preocupação é a sua satisfação.<br></p>
+            <h2>A sua refeição é a nossa preocupação</h2>
+            <p>Quantas vezes já desistiu de realizar o seu jantar ou almoço pela única e simples razão da
+                preguiça de pensar no que cozinhar? Em vez de ter uma alimentação saudável,sentamos no sofá a comer
+                “snacks”. Com esta app, jamais terá
+                que pensar no que cozinhar, a app pensa por si e mostra as receitas que prefere, porque a nossa
+                preocupação é a sua satisfação.</p>
         </div>
     </section>
     <section class="clean-block clean-info dark">
         <div class="container">
             <div class="block-heading">
-                <h2 class="text-info" style="height: 15px;">Info</h2>
+                <h2 class="text-info" style="height: 15px; margin-left: auto; margin-right: auto">Info</h2>
                 <p style="height: 46px;"><br>Está aplicação permitirá voce jamais de preocupar o que cozinhar.<br></p>
             </div>
             <div class="row align-items-center">
-                <div class="col-md-6" style="width: 533px;text-align: left;">
+                <div class="col-md-4" style="text-align: center;">
                     <h3>Página do Login</h3>
-                    <p><br>Inicie a sua sessão rapidamente para a aplicação atravez da pagina do login.<br><br></p><img class="img-thumbnail" width="279" height="590" src="<?= $assets->baseUrl ?>/assets/img/scenery/Login.jpg" style="height: 600px;"></div>
-                <div class="col-md-6" style="width: 533px;text-align: right;">
+                    <p>Inicie a sua sessão rapidamente para a aplicação atravez da pagina do login.</p>
+                    <img class="img-thumbnail shadow-lg" width="279" height="590"
+                         src="<?= $assets->baseUrl ?>/assets/img/scenery/login.png">
+                </div>
+                <div class="col-md-4" style="text-align: center;">
                     <h3>Página do Registo</h3>
-                    <p>Ainda não tem conta? Registre-se logo na aplicação e facili-te o seu acesso.</p><img class="img-thumbnail" width="279" height="590" src="<?= $assets->baseUrl ?>/assets/img/scenery/Registo.jpg" style="height: 600px;"></div>
-                <div class="col-md-6">
-                    <div class="getting-started-info"></div>
+                    <p>Ainda não tem conta? Registre-se logo na aplicação e facili-te o seu acesso.</p>
+                    <img class="img-thumbnail shadow-lg" width="279" height="590"
+                         src="<?= $assets->baseUrl ?>/assets/img/scenery/register.png">
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <h3>Perfil eficaz</h3>
+                    <p>Poderá mostrar as receitas e os ingredientes disponiveis. </p>
+                    <img class="img-thumbnail shadow-lg" width="279" height="590"
+                         src="<?= $assets->baseUrl ?>/assets/img/scenery/profile.png">
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-md-6" style="width: 533px;text-align: left;">
-                    <h3>Perfil eficaz</h3>
-                    <p>Poderá mostrar as receitas e os ingredientes disponiveis. </p><img class="img-thumbnail" width="279" height="590" src="<?= $assets->baseUrl ?>/assets/img/scenery/perfil.png"
-                                                                                                                                                                                                             style="height: 600px;"></div>
-                <div class="col-md-6" style="width: 533px;text-align: right;">
+            <div class="row align-items-center" style="margin-top: 15px">
+                <div class="col-md-4" style="text-align: center;">
                     <h3>Shopping cart</h3>
-                    <p>Evite esquecer o que comprar, com esta ferramente esteja sempre atualizado.</p><img class="img-thumbnail" width="279" height="590" src="<?= $assets->baseUrl ?>/assets/img/scenery/shopping.png"
-                                                                                                                                                                                                             style="height: 600px;"></div>
-                <div class="col-md-6">
-                    <div class="getting-started-info"></div>
+                    <p>Evite esquecer o que comprar, com esta ferramente esteja sempre atualizado.</p>
+                    <img class="img-thumbnail shadow-lg" width="279" height="590"
+                         src="<?= $assets->baseUrl ?>/assets/img/scenery/shopping_list.png">
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <h3>Recipes Available</h3>
+                    <p>Pagina para visualizar todas as receitas disponiveis de acordo com a despensa do utilizador.</p>
+                    <img class="img-thumbnail shadow-lg" width="279" height="590"
+                         src="<?= $assets->baseUrl ?>/assets/img/scenery/receitas_disponiveis.png">
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <h3>All Recipes</h3>
+                    <p>Pagina para visualizar todas as receitas que existem na nossa base de dados.</p>
+                    <img class="img-thumbnail shadow-lg" width="279" height="590"
+                         src="<?= $assets->baseUrl ?>/assets/img/scenery/receitas_todas.png">
+                </div>
+                <div class="row align-items-center" style="margin-top: 15px">
+                <div class="col-md-4" style="text-align: center;">
+                    <h3>Details for Recipes</h3>
+                    <p>Página para visualizar os detalhes da receita.</p>
+                    <img class="img-thumbnail shadow-lg" width="279" height="590"
+                         src="<?= $assets->baseUrl ?>/assets/img/scenery/receitas_detalhes.png">
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <h3>Add Item</h3>
+                    <p>Página para adicionar manualmente o item a despensa.</p>
+                    <img class="img-thumbnail shadow-lg" width="279" height="590"
+                         src="<?= $assets->baseUrl ?>/assets/img/scenery/add_manual.png">
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <h3>Scan</h3>
+                    <p>Página para adicionar os items despensa utilizando o codigo de barras do mesmo.</p>
+                    <img class="img-thumbnail shadow-lg" width="279" height="590"
+                         src="<?= $assets->baseUrl ?>/assets/img/scenery/add_scan.png">
                 </div>
             </div>
         </div>
@@ -66,7 +105,8 @@ $this->title = 'FoodManager';
                 </div>
                 <div class="col-md-5 feature-box"><i class="icon-refresh icon"></i>
                     <h4><strong>Feedback</strong><br></h4>
-                    <p>Gostou da aplicação? Tem ideias?<br>Por favor, faça-nos conhecer a sua ideia <a href="contact-us.html">aqui.</a><br></p>
+                    <p>Gostou da aplicação? Tem ideias?<br>Por favor, faça-nos conhecer a sua ideia <a
+                                href="<?= \yii\helpers\Url::toRoute('site/contactus') ?>">aqui.</a><br></p>
                 </div>
             </div>
         </div>
@@ -75,13 +115,16 @@ $this->title = 'FoodManager';
         <div class="container">
             <div class="block-heading">
                 <h2 class="text-info">FoodManager</h2>
-                <p>Este projeto foi realizado no ambito do Politecnico de Leiria, ESTG, para o curso Programação de Sistemas de Informação</p>
+                <p>Este projeto foi realizado no ambito do Politecnico de Leiria, ESTG, para o curso Programação de
+                    Sistemas de Informação</p>
             </div>
         </div>
         <div class="container">
             <div>
                 <div class="row">
-                    <div class="col"><img class="img-fluid d-xl-flex align-items-xl-end" src="<?= $assets->baseUrl ?>/assets/img/ESTG_ipl.jpg" style="filter: grayscale(0%);"></div>
+                    <div class="col"><img class="img-fluid d-xl-flex align-items-xl-end"
+                                          src="<?= $assets->baseUrl ?>/assets/img/ESTG_ipl.jpg"
+                                          style="filter: grayscale(0%);"></div>
                 </div>
             </div>
         </div>
