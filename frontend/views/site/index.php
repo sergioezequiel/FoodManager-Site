@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use common\widgets\Alert;
+
 $assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>

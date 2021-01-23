@@ -8,7 +8,7 @@ $assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>
 <main class="page faq-page">
-    <section class="clean-block clean-faq dark">
+    <section class="clean-block clean-faq dark" style="padding-top: 50px; padding-bottom: 50px;">
         <div class="container">
             <div class="block-heading">
                 <h2 class="text-info">404</h2>
@@ -17,7 +17,6 @@ $this->title = 'FoodManager';
             <div class="alert alert-danger">
                 <?= nl2br(Html::encode($message)) ?>
             </div>
-
             <p>
                 The above error occurred while the Web server was processing your request.
             </p>

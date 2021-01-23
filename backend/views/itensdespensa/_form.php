@@ -1,5 +1,8 @@
 <?php
 
+use app\models\Produto;
+use app\models\User;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -18,9 +21,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'validade')->textInput() ?>
 
-    <?= $form->field($model, 'idproduto')->textInput() ?>
+    <?= $form->field($model, 'idproduto')
+        ->dropDownList(ArrayHelper::map(Produto::find()->asArray()->all(), 'idproduto', 'nome'),
+            ['prompt' => ' -- Selecionar Produto --'])
+        ->label('ID Produto') ?>
 
-    <?= $form->field($model, 'idutilizador')->textInput() ?>
+    <?= $form->field($model, 'idutilizador')
+        ->dropDownList(ArrayHelper::map(User::find()->asArray()->all(), 'id', 'username'),
+            ['prompt' => ' -- Selecionar Utilizador --'])
+        ->label('ID Utilizador') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

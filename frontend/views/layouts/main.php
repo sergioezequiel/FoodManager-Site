@@ -1,13 +1,14 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
+use common\widgets\Alert;
+use frontend\assets\FoodmanAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
-use frontend\assets\FoodmanAsset;
-use common\widgets\Alert;
 
 FoodmanAsset::register($this);
 ?>
@@ -27,20 +28,27 @@ FoodmanAsset::register($this);
 
 <div class="wrap">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">FoodMan</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" href="#">FoodMan</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                        class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                  id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/index')?>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/receita')?>">Receitas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/aboutus')?>">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/faq')?>">Faq</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/contactus')?>">Contact Us</a></li>
-                    <?php if(!Yii::$app->user->isGuest) { ?>
-                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/itemdespensa')?>">Despensa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/logout')?>">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::toRoute('site/index') ?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::toRoute('site/receita') ?>">Receitas</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::toRoute('site/aboutus') ?>">About Us</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::toRoute('site/faq') ?>">Faq</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::toRoute('site/contactus') ?>">Contact Us</a>
+                    </li>
+                    <?php if (!Yii::$app->user->isGuest) { ?>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::toRoute('site/itemdespensa') ?>">Despensa</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::toRoute('site/logout') ?>">Logout</a>
+                        </li>
                     <?php } else { ?>
-                    <li class="nav-item"><a class="nav-link" href="<?=Url::toRoute('site/login')?>">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::toRoute('site/login') ?>">Login</a></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -48,12 +56,16 @@ FoodmanAsset::register($this);
     </nav>
 
 
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+    <?= Breadcrumbs::widget([
+        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]) ?>
+
+   <div class="mt-3 page" style=" position: fixed; z-index: 9999;right: 9px; ">
         <?= Alert::widget() ?>
-        <?= $content ?>
-    
+   </div>
+
+    <?= $content ?>
+
 </div>
 
 <footer class="page-footer dark">
@@ -62,15 +74,15 @@ FoodmanAsset::register($this);
             <div class="col-sm-3">
                 <h5>Link de acesso rápido</h5>
                 <ul>
-                    <li><a href="<?=Url::toRoute('site/index')?>">Home</a></li>
-                    <li><a href="<?=Url::toRoute('site/login')?>">Login</a></li>
-                    <li><a href="<?=Url::toRoute('site/contactus')?>">Contacte-nos</a></li>
+                    <li><a href="<?= Url::toRoute('site/index') ?>">Home</a></li>
+                    <li><a href="<?= Url::toRoute('site/login') ?>">Login</a></li>
+                    <li><a href="<?= Url::toRoute('site/contactus') ?>">Contacte-nos</a></li>
                 </ul>
             </div>
             <div class="col-sm-3">
                 <h5>About us</h5>
                 <ul>
-                    <li><a href="<?=Url::toRoute('site/aboutus')?>">Sobre Nós</a></li>
+                    <li><a href="<?= Url::toRoute('site/aboutus') ?>">Sobre Nós</a></li>
                 </ul>
             </div>
             <div class="col-sm-3">

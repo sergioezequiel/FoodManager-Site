@@ -15,7 +15,7 @@ $this->title = 'Signup';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <main class="page login-page">
-    <section class="clean-block clean-form dark">
+    <section class="clean-block clean-form dark" style="padding-top: 50px; padding-bottom: 50px;">
         <div class="container">
             <div class="block-heading">
                 <h2 class="text-info"><?= Html::encode($this->title) ?></h2>

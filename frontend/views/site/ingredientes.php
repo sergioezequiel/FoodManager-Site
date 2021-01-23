@@ -11,7 +11,7 @@ $assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>
 <main class="page faq-page">
-    <section class="clean-block clean-faq dark">
+    <section class="clean-block clean-faq dark" style="padding-top: 50px; padding-bottom: 50px;">
         <div class="block-heading">
             <h2 class="text-info"><?= $receita->nome ?></h2>
         </div>

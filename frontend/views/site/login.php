@@ -12,7 +12,7 @@ $assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>
 <main class="page login-page">
-    <section class="clean-block clean-form dark">
+    <section class="clean-block clean-form dark" style="padding-top: 50px; padding-bottom: 50px;">
         <div class="container">
             <div class="block-heading">
                 <h2 class="text-info">Log In</h2>

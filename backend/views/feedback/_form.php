@@ -1,5 +1,7 @@
 <?php
 
+use app\models\User;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -20,9 +22,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'texto')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'tipo')->textInput() ?>
+    <?= $form->field($model, 'tipo')->dropDownList(['Sugestão de Receita', 'Melhoria na App', 'Sugestões', 'Produto em falta (código de barras)', 'Feedback Geral', 'Outro'], ['className' => 'form-control','prompt' => ' -- Selecionar Tipo --']) ?>
 
-    <?= $form->field($model, 'idutilizador')->textInput()->label('ID Utilizador') ?>
+    <?= $form->field($model, 'idutilizador')
+        ->dropDownList(ArrayHelper::map(User::find()->asArray()->all(), 'id', 'username'),
+            ['prompt' => ' -- Selecionar Utilizador --'])
+        ->label('ID Utilizador') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

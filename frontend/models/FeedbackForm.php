@@ -3,11 +3,12 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Model;
 use yii\db\ActiveRecord;
 use common\models\User;
 use common\models\Feedback;
 
-class FeedbackForm extends ActiveRecord
+class FeedbackForm extends Model
 {
     public $nome;
     public $tipo;
@@ -15,6 +16,7 @@ class FeedbackForm extends ActiveRecord
     public $assunto;
     public $email;
     public $texto;
+    public $idutilizador = 1;
 
     /**
      * {@inheritdoc}
@@ -38,22 +40,6 @@ class FeedbackForm extends ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
-            'idfeedback' => 'Idfeedback',
-            'nome' => 'Nome',
-            'subjet' => 'Subjet',
-            'email' => 'Email',
-            'texto' => 'Texto',
-            'tipo' => 'Tipo',
-            'idutilizador' => 'Idutilizador',
-        ];
-    }
-
     public function submit()
     {
         if (!$this->validate()) {
@@ -61,22 +47,14 @@ class FeedbackForm extends ActiveRecord
         }
 
         $feedback = new Feedback();
-        $feedback->nome = '$this->nome';
-        $feedback->tipo = 2;
-        $feedback->subjet = '$this->assunto';
-        $feedback->email = '$this->email';
-        $feedback->texto = '$this->texto';
-        $feedback->idutilizador = 1;
+        $feedback->nome = $this->nome;
+        $feedback->tipo = $this->tipo;
+        $feedback->subjet =  $this->subjet;
+        $feedback->email = $this->email;
+        $feedback->texto = $this->texto;
+        $feedback->idutilizador = $this->idutilizador;
 
-        if ($feedback->save()) {
-            $auth = Yii::$app->authManager;
-            $userRole = $auth->getRole('user');
-            $auth->assign($userRole, $this->getIdutilizador0());
-
-            return true;
-        }
-
-        return false;
+        return $feedback->save();
     }
 
 

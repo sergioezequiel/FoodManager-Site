@@ -5,16 +5,17 @@
 /* @var $receitas app\models\Receitas */
 
 use app\models\Receitas;
+use frontend\assets\FoodmanAsset;
 use yii\db\Query;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$assets = \frontend\assets\FoodmanAsset::register($this);
+$assets = FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>
 
 <main class="page faq-page">
-    <section class="clean-block clean-faq dark">
+    <section class="clean-block clean-faq dark" style="padding-top: 50px; padding-bottom: 50px;">
         <div class="container">
             <div class="block-heading">
                 <h2 class="text-info">Receitas</h2>

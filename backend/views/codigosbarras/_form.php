@@ -1,5 +1,7 @@
 <?php
 
+use app\models\Produto;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -20,7 +22,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'quantidade')->textInput() ?>
 
-    <?= $form->field($model, 'idproduto')->textInput()->label('ID Produto') ?>
+    <?= $form->field($model, 'idproduto')
+        ->dropDownList(ArrayHelper::map(Produto::find()->asArray()->all(), 'idproduto', 'nome'),
+            ['prompt' => ' -- Selecionar Produto --'])
+        ->label('ID Produto') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
