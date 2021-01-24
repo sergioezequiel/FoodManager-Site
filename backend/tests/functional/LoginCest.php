@@ -38,8 +38,8 @@ class LoginCest
         $I->click('login-button');
 
         $I->cantSee('login-button');
-        $I->cantSee('Username cannot be blank.', '.help-block');
-        $I->cantSee('Password cannot be blank.', '.help-block');
+        $I->cantSee('Username cannot be blank.', '.invalid-feedback');
+        $I->cantSee('Password cannot be blank.', '.invalid-feedback');
 
         $I->see('FoodManager');
         $I->makeHtmlSnapshot('test');
@@ -51,8 +51,8 @@ class LoginCest
         $I->fillField('Username', '');
         $I->fillField('Password', '');
         $I->click('login-button');
-        $I->see('Username cannot be blank.', '.help-block');
-        $I->see('Password cannot be blank.', '.help-block');
+        $I->see('Username cannot be blank.', '.invalid-feedback');
+        $I->see('Password cannot be blank.', '.invalid-feedback');
 
         $I->makeHtmlSnapshot('test');
     }

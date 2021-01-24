@@ -32,7 +32,7 @@ class CodigosBarraCest
         $I->fillField('#codigobarras-nome', 'Mome de codigo');
         $I->fillField('#codigobarras-marca', 'Marca de produto');
         $I->fillField('#codigobarras-quantidade', '10');
-        $I->fillField('#codigobarras-idproduto', '1');
+        $I->selectOption('#codigobarras-idproduto', '1');
         $I->click('Save');
 
         $I->cantSeeRecord(CodigoBarras::class, ['nome' => '16166912']);
@@ -51,7 +51,7 @@ class CodigosBarraCest
         $I->fillField('#codigobarras-nome', '');
         $I->fillField('#codigobarras-marca', '');
         $I->fillField('#codigobarras-quantidade', '');
-        $I->fillField('#codigobarras-idproduto', '');
+        $I->selectOption('#codigobarras-idproduto', '');
         $I->click('Save');
 
         $I->cantSeeRecord(CodigoBarras::class, ['nome' => '']);
@@ -70,7 +70,7 @@ class CodigosBarraCest
         $I->fillField('#codigobarras-nome', 'Mome de codigo');
         $I->fillField('#codigobarras-marca', 'Marca de produto');
         $I->fillField('#codigobarras-quantidade', '10');
-        $I->fillField('#codigobarras-idproduto', '1');
+        $I->selectOption('#codigobarras-idproduto', '1');
         $I->click('Save');
 
         $I->canSeeRecord(CodigoBarras::class, ['codigobarras' => '16166912']);
@@ -80,7 +80,7 @@ class CodigosBarraCest
         $I->fillField('#codigobarras-nome', 'Mome de codigo');
         $I->fillField('#codigobarras-marca', 'Marca de produto');
         $I->fillField('#codigobarras-quantidade', '10');
-        $I->fillField('#codigobarras-idproduto', '1');
+        $I->selectOption('#codigobarras-idproduto', '1');
         $I->click('Save');
 
         $I->see('Codigobarras "16166912" has already been taken.', '.help-block');

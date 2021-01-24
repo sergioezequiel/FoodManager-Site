@@ -30,7 +30,7 @@ $this->title = 'FoodManager';
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
             </div>
             <div class="form-group">
-                <?= Html::submitButton('Log In', ['class' => 'btn btn-primary btn-block', 'name' => 'signup-button']) ?>
+                <?= Html::submitButton('Log In', ['class' => 'btn btn-primary btn-block', 'name' => 'signup-button', 'id'=>'login']) ?>
                 <a class="btn btn-primary btn-block" href="<?= Url::toRoute('site/signup'); ?>">Criar conta</a>
             </div>
             <?php ActiveForm::end(); ?>

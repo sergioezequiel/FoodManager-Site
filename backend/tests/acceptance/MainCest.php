@@ -82,7 +82,7 @@ class MainCest
         $I->fillField('#receita-duracaopreparacao', '60');
         $I->fillField('#receita-duracaoreceita', '40');
         $I->fillField('#receita-passos', 'Passos para uma receita para se comer');
-        $I->fillField('#receita-idutilizador', '1');
+        $I->selectOption('#receita-idutilizador', '1');
         $I->wait(1);
         $I->click('Save');
         $I->wait(2);
@@ -94,14 +94,14 @@ class MainCest
         $I->clearField('#receita-duracaopreparacao');
         $I->clearField('#receita-duracaoreceita');
         $I->clearField('#receita-passos');
-        $I->clearField('#receita-idutilizador');
+       // $I->unselectOption('#receita-idutilizador', '1');
         $I->wait(1);
         $I->fillField('#receita-imagem', 'Receitas para a imagem');
         $I->fillField('#receita-nome', 'Receitas com bolo');
         $I->fillField('#receita-duracaopreparacao', '80');
         $I->fillField('#receita-duracaoreceita', '60');
         $I->fillField('#receita-passos', 'Passos para uma receita para se comer um bom bolo ');
-        $I->fillField('#receita-idutilizador', '1');
+        $I->selectOption('#receita-idutilizador', '1');
 
         $I->wait(1);
         $I->click('Save');
@@ -157,7 +157,7 @@ class MainCest
         $I->fillField('#produto-nome', 'Um produto');
         $I->fillField('#produto-unidade', 'g');
         $I->fillField('#produto-imagem', 'Uma imagem para o produto');
-        $I->fillField('#produto-idcategoria', '1');
+        $I->selectOption('#produto-idcategoria', '1');
         $I->wait(1);
         $I->click('Save');
 
@@ -168,13 +168,13 @@ class MainCest
         $I->clearField('#produto-nome');
         $I->clearField('#produto-unidade');
         $I->clearField('#produto-imagem');
-        $I->clearField('#produto-idcategoria');
+        //$I->clearField('#produto-idcategoria');
         $I->wait(1);
 
         $I->fillField('#produto-nome', 'Produto de um');
         $I->fillField('#produto-unidade', 'u');
         $I->fillField('#produto-imagem', 'Imagem de produto');
-        $I->fillField('#produto-idcategoria', '2');
+        $I->selectOption('#produto-idcategoria', '1');
 
         $I->wait(1);
         $I->click('Save');
@@ -197,7 +197,7 @@ class MainCest
         $I->fillField('#codigobarras-nome', 'Mome de codigo');
         $I->fillField('#codigobarras-marca', 'Marca de produto');
         $I->fillField('#codigobarras-quantidade', '10');
-        $I->fillField('#codigobarras-idproduto', '1');
+        $I->selectOption('#codigobarras-idproduto', '1');
         $I->wait(1);
         $I->click('Save');
 
@@ -210,14 +210,14 @@ class MainCest
         $I->clearField('#codigobarras-nome');
         $I->clearField('#codigobarras-marca');
         $I->clearField('#codigobarras-quantidade');
-        $I->clearField('#codigobarras-idproduto');
+        //$I->clearField('#codigobarras-idproduto');
         $I->wait(1);
 
         $I->fillField('#codigobarras-codigobarras', '82669250');
         $I->fillField('#codigobarras-nome', 'g');
         $I->fillField('#codigobarras-marca', 'De uma marca');
         $I->fillField('#codigobarras-quantidade', '10');
-        $I->fillField('#codigobarras-idproduto', '1');
+        $I->selectOption('#codigobarras-idproduto', '1');
 
         $I->wait(1);
         $I->click('Save');

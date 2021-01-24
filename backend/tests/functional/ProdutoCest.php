@@ -36,15 +36,15 @@ class ProdutoCest
         $I->fillField('#produto-nome', 'Um produto');
         $I->fillField('#produto-unidade', 'g');
         $I->fillField('#produto-imagem', 'Uma imagem para o produto');
-        $I->fillField('#produto-idcategoria', '1');
+        $I->selectOption('#produto-idcategoria', '1');
         $I->click('Save');
 
         $I->canSeeRecord(Produto::class, ['nome' => 'Um produto']);
 
-        $I->cantSee('Nome cannot be blank.', '.help-block');
-        $I->cantSee('Unidade cannot be blank.', '.help-block');
-        $I->cantSee('Imagem cannot be blank.', '.help-block');
-        $I->cantSee('Idcategoria cannot be blank.', '.help-block');
+        $I->cantSee('Nome cannot be blank.', '.invalid-feedback');
+        $I->cantSee('Unidade cannot be blank.', '.invalid-feedback');
+        $I->cantSee('Imagem cannot be blank.', '.invalid-feedback');
+        $I->cantSee('Idcategoria cannot be blank.', '.invalid-feedback');
     }
 
     public function checkErro(FunctionalTester $I){
@@ -54,14 +54,14 @@ class ProdutoCest
         $I->fillField('#produto-nome', '');
         $I->fillField('#produto-unidade', '');
         $I->fillField('#produto-imagem', '');
-        $I->fillField('#produto-idcategoria', '');
+        $I->selectOption('#produto-idcategoria', '');
         $I->click('Save');
 
         $I->cantSeeRecord(Produto::class, ['nome' => 'Um produto']);
 
-        $I->canSee('Nome cannot be blank.', '.help-block');
-        $I->canSee('Unidade cannot be blank.', '.help-block');
-        $I->canSee('Imagem cannot be blank.', '.help-block');
-        $I->canSee('Idcategoria cannot be blank.', '.help-block');
+        $I->canSee('Nome cannot be blank.', '.invalid-feedback');
+        $I->canSee('Unidade cannot be blank.', '.invalid-feedback');
+        $I->canSee('Imagem cannot be blank.', '.invalid-feedback');
+        $I->canSee('Idcategoria cannot be blank.', '.invalid-feedback');
     }
 }
