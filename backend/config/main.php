@@ -104,6 +104,7 @@ return [
                     'controller' => 'api/feedback',
                     'pluralize' => false,
                     'extraPatterns' => [
+                        'POST adicionarfeedback' => 'adicionarfeedback',
                         'GET utilizador/<apikey:\w+>' => 'utilizador',
                         'GET tipos/<apikey:\w+>' => 'tipos',
                         'GET tiposglobais/<apikey:\w+>' => 'tiposglobais',
