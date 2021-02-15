@@ -104,6 +104,30 @@ class Ingrediente extends \yii\db\ActiveRecord
         return $texto;
     }
 
+    public static function getTipoTextoId($tipoPreparacao) {
+        $texto = '';
+
+        switch ($tipoPreparacao) {
+            case 0:
+                $texto = 'Sem Preparação';
+                break;
+            case 1:
+                $texto = 'Às rodelas';
+                break;
+            case 2:
+                $texto = 'Aos cubos';
+                break;
+            case 3:
+                $texto = 'Outro';
+                break;
+            default:
+                $texto = 'Tipo Desconhecido';
+                break;
+        }
+
+        return $texto;
+    }
+
     public function getProdutoName() {
         return $this->idproduto0->nome;
     }

@@ -2,24 +2,24 @@
 
 namespace frontend\controllers;
 
-use app\models\Feedback;
 use app\models\FeedbackForm;
 use app\models\Ingrediente;
 use app\models\Itensdespensa;
 use app\models\Receita;
-use app\models\Receitas;
+use common\models\LoginForm;
+use common\models\User;
+use frontend\models\ContactForm;
 use frontend\models\ResendVerificationEmailForm;
+use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\VerifyEmailForm;
+use Symfony\Component\Console\Helper\Dumper;
 use Yii;
-use yii\base\InvalidArgumentException;
-use yii\web\BadRequestHttpException;
+use yii\db\Query;
+use yii\debug\models\search\Debug;
+use yii\debug\panels\DumpPanel;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use common\models\LoginForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\ContactForm;
 
 /**
  * Site controller
@@ -37,7 +37,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-      Yii::$app->assetManager->forceCopy = true;
+        Yii::$app->assetManager->forceCopy = true;
         return $this->render('index');
     }
 
@@ -105,6 +105,15 @@ class SiteController extends Controller
         return $this->render('receita', ['receitas' => $receitas]);
     }
 
+    public function actionPesquisa($search)
+    {
+        /*Yii::$app->assetManager->forceCopy = true;*/
+
+        $receitas = Receita::find()->where(['like', 'nome', '%' . $search . '%', false])->all();
+
+        return $this->render('receita', ['receitas' => $receitas]);
+    }
+
     public function actionItemdespensa()
     {
         $despensa = Itensdespensa::find()->andWhere(['idutilizador' => Yii::$app->user->id])->all();
@@ -113,13 +122,28 @@ class SiteController extends Controller
 
     public function actionIngredientes($receita)
     {
-        {
-            return $this->render('ingredientes', [
-                'ingredientes' => Ingrediente::find()->andWhere(['idreceita' => $receita])->all(),
-                'receita' => Receita::find()->andWhere(['idreceita' => $receita])->one(),
-            ]);
-        }
+        $querydisp = (new Query())->select('i.idingrediente, i.nome, CONCAT(i.quantnecessaria, space(1), `p`.`unidade`) as quantstring, i.quantnecessaria, i.tipopreparacao, i.idproduto, i.idreceita')
+            ->from('ingredientes i')
+            ->innerJoin('produtos p', 'i.idproduto = p.idproduto')
+            ->andWhere(['i.idreceita' => $receita])
+            ->andWhere(['in', 'i.idproduto', (new Query())->select('idproduto')->from('itensdespensa')->andWhere(['idutilizador' => Yii::$app->user->id])])
+            ->all();
+
+        $queryindisp= (new Query())->select('i.idingrediente, i.nome, CONCAT(i.quantnecessaria, space(1), `p`.`unidade`) as quantstring, i.quantnecessaria, i.tipopreparacao, i.idproduto, i.idreceita')
+            ->from('ingredientes i')
+            ->innerJoin('produtos p', 'i.idproduto = p.idproduto')
+            ->andWhere(['i.idreceita' => $receita])
+            ->andWhere(['not in', 'i.idproduto', (new Query())->select('idproduto')->from('itensdespensa')->andWhere(['idutilizador' => Yii::$app->user->id])])
+            ->all();
+
+        return $this->render('ingredientes', [
+            'ingredientesdisp' => $querydisp,
+            'ingredientesindisp' => $queryindisp,
+            'ingredientes' => Ingrediente::find()->andWhere(['idreceita' => $receita])->all(),
+            'receita' => Receita::find()->andWhere(['idreceita' => $receita])->one(),
+        ]);
     }
+
 
     public function actionLogout()
     {

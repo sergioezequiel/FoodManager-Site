@@ -6,7 +6,9 @@ $assets = \frontend\assets\FoodmanAsset::register($this);
 $this->title = 'FoodManager';
 ?>
 <main class="page faq-page">
+    <div  style="background-color: #f6f6f6; width: 100% ; height: 100vh; position: fixed; z-index: -1"></div>
     <section class="clean-block clean-faq dark" style="padding-top: 50px; padding-bottom: 50px;">
+
         <div class="container">
             <div class="block-heading">
                 <h2 class="text-info">Despensa</h2>

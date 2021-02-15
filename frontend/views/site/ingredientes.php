@@ -1,10 +1,13 @@
 <?php
 
 /* @var $this yii\web\View
- * @var $ingredientes \app\models\Ingrediente
- * @var $receita \app\models\Ingrediente
+ * @var $ingredientesdisp Ingrediente
+ * @var $ingredientes Ingrediente
+ * @var $ingredientesindisp Ingrediente
+ * @var $receita Ingrediente
  */
 
+use app\models\Ingrediente;
 use yii\helpers\Html;
 
 $assets = \frontend\assets\FoodmanAsset::register($this);
@@ -24,16 +27,36 @@ $this->title = 'FoodManager';
                     <th>Quantidade Necessária</th>
                     <th>Tipo de Preparação</th>
                 </tr>
-                <?php foreach ($ingredientes as $item) { ?>
-                <tr>
-                    <td><?= Html::encode($item->nome) ?></td>
-                    <td><?= $item->quantnecessaria != 0 ? Html::encode($item->getQuantUnidade()) : '-' ?></td>
-                    <td><?= Html::encode($item->getTipoTexto()) ?></td>
-                </tr>
+                <?php
+                if (Yii::$app->user->isGuest) {
+                    foreach ($ingredientes as $item) { ?>
+                    <tr>
+                        <td><?= Html::encode($item->nome) ?></td>
+                        <td><?= $item->quantnecessaria != 0 ? Html::encode($item->getQuantUnidade()) : '-' ?></td>
+                        <td><?= Html::encode($item->getTipoTexto()) ?></td>
+                    </tr>
+                <?php } } else { ?>
+                <?php foreach ($ingredientesdisp as $item) { ?>
+                    <tr>
+                        <td><i style="color: green" class="fas fa-check-circle"></i> <?= Html::encode($item['nome']) ?>
+                        </td>
+                        <td><?= $item['quantnecessaria'] != 0 ? Html::encode($item['quantstring']) : '-' ?></td>
+                        <td><?= Html::encode(Ingrediente::getTipoTextoId($item['tipopreparacao'])) ?></td>
+                    </tr>
                 <?php } ?>
+
+                <?php foreach ($ingredientesindisp as $item) { ?>
+                    <tr>
+                        <td><i style="color: red" class="fas fa-times-circle"></i> <?= Html::encode($item['nome']) ?>
+                        </td>
+                        <td><?= $item['quantnecessaria'] != 0 ? Html::encode($item['quantstring']) : '-' ?></td>
+                        <td><?= Html::encode(Ingrediente::getTipoTextoId($item['tipopreparacao'])) ?></td>
+                    </tr>
+                <?php } } ?>
             </table>
             <br><br>
             <?= $receita->passos ?>
+
         </div>
     </section>
 </main>

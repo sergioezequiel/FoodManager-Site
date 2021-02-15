@@ -104,6 +104,8 @@ class Ingrediente extends \yii\db\ActiveRecord
         return $texto;
     }
 
+
+
     public function getProdutoName() {
         return $this->idproduto0->nome;
     }
