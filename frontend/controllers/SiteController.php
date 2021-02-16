@@ -56,6 +56,15 @@ class SiteController extends Controller
     {
         $model = new FeedbackForm();
 
+        if (!Yii::$app->user->isGuest) {
+           $model->idutilizador = Yii::$app->user->id;
+           $model->nome = Yii::$app->user->identity->username;
+           $model->email = Yii::$app->user->identity->email;
+
+        }else{
+            $model->idutilizador = 1;
+        }
+        $model->created_at = strtotime("now");
         if ($model->load(Yii::$app->request->post()) && $model->submit()) {
             if ($model->validate()) {
                 Yii::$app->session->setFlash('success', 'Thank you for your feedback.');
@@ -90,7 +99,7 @@ class SiteController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            Yii::$app->session->setFlash('success', 'Thank you for registration.');
             return $this->goHome();
         }
 

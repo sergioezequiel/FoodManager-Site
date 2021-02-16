@@ -2,20 +2,19 @@
 
 namespace backend\controllers;
 
-use app\models\Feedback;
-use app\models\FeedbackCategoria;
-use app\models\FeedbackSearch;
 use common\models\User;
 use Yii;
+use app\models\AuthAssignment;
+use app\models\AuthassignmentSearch;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
- * FeedbackController implements the CRUD actions for Feedback model.
+ * AuthassignmentController implements the CRUD actions for AuthAssignment model.
  */
-class FeedbackController extends Controller
+class AuthassignmentController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -28,8 +27,8 @@ class FeedbackController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'delete', 'create', 'update', 'view'],
-                        'roles' => ['gestor', 'admin']
+                        'actions' => ['index','delete','create','update','view'],
+                        'roles' => ['admin']
                     ],
                 ]
             ],
@@ -50,7 +49,7 @@ class FeedbackController extends Controller
             return parent::beforeAction($action);
         }
 
-        if (!Yii::$app->user->isGuest) {
+        if(!Yii::$app->user->isGuest) {
             $user = User::find()->where(['id' => Yii::$app->user->getId()])->one();
             $this->view->params['username'] = $user->username;
         }
@@ -58,13 +57,14 @@ class FeedbackController extends Controller
         return parent::beforeAction($action);
     }
 
+
     /**
-     * Lists all Feedback models.
+     * Lists all AuthAssignment models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new FeedbackSearch();
+        $searchModel = new AuthassignmentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -74,29 +74,30 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Displays a single Feedback model.
-     * @param integer $id
+     * Displays a single AuthAssignment model.
+     * @param string $item_name
+     * @param string $user_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($item_name, $user_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($item_name, $user_id),
         ]);
     }
 
     /**
-     * Creates a new Feedback model.
+     * Creates a new AuthAssignment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Feedback();
-        $model->created_at = strtotime("now");
+        $model = new AuthAssignment();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idfeedback]);
+            return $this->redirect(['view', 'item_name' => $model->item_name, 'user_id' => $model->user_id]);
         }
 
         return $this->render('create', [
@@ -105,18 +106,19 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Updates an existing Feedback model.
+     * Updates an existing AuthAssignment model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $item_name
+     * @param string $user_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($item_name, $user_id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($item_name, $user_id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idfeedback]);
+            return $this->redirect(['view', 'item_name' => $model->item_name, 'user_id' => $model->user_id]);
         }
 
         return $this->render('update', [
@@ -125,29 +127,31 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Deletes an existing Feedback model.
+     * Deletes an existing AuthAssignment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $item_name
+     * @param string $user_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($item_name, $user_id)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($item_name, $user_id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Feedback model based on its primary key value.
+     * Finds the AuthAssignment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Feedback the loaded model
+     * @param string $item_name
+     * @param string $user_id
+     * @return AuthAssignment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($item_name, $user_id)
     {
-        if (($model = Feedback::findOne($id)) !== null) {
+        if (($model = AuthAssignment::findOne(['item_name' => $item_name, 'user_id' => $user_id])) !== null) {
             return $model;
         }
 

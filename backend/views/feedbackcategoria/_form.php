@@ -4,14 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\User */
+/* @var $model app\models\FeedbackCategoria */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="user-form">
+<div class="feedback-categoria-form">
 
     <?php $form = ActiveForm::begin(); ?>
-    <?= $form->field($model, 'status')->dropDownList(['0'=>'Eliminado', '9'=> 'Inativo', '10'=> 'Ativo'], ['className' => 'form-control','prompt' => ' -- Selecionar Estado --']) ?>
+
+    <?= $form->field($model, 'categoria')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

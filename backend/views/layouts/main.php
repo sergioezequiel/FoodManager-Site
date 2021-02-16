@@ -50,6 +50,12 @@ use common\widgets\Alert;
                             Início
                         </a>
                         <div class="sb-sidenav-menu-heading">Gestão</div>
+                        <?php if(Yii::$app->user->can('admin')){ ?>
+                            <a class="nav-link" href="<?= Url::toRoute('authassignment/index') ?>">
+                                <div class="sb-nav-link-icon"><i class="fas fa-key"></i></div>
+                                Auth Assignments
+                            </a>
+                        <?php } ?>
                         <?php if(Yii::$app->user->can('moderador') || Yii::$app->user->can('admin')) { ?>
                         <a class="nav-link" href="<?= Url::toRoute('user/index') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
@@ -75,6 +81,10 @@ use common\widgets\Alert;
                             <div class="sb-nav-link-icon"><i class="fas fa-barcode"></i></div>
                             Códigos Barras
                         </a>
+                        <a class="nav-link" href="<?= Url::toRoute('feedbackcategoria/index') ?>">
+                            <div class="sb-nav-link-icon"><i class="fas fa-barcode"></i></div>
+                            Feedback Categoria
+                        </a>
                         <?php } ?>
                         <?php if(Yii::$app->user->can('moderador') || Yii::$app->user->can('gestor') || Yii::$app->user->can('admin')) { ?>
                         <a class="nav-link" href="<?= Url::toRoute('itensdespensa/index') ?>">
@@ -82,7 +92,7 @@ use common\widgets\Alert;
                             Despensa (utilizadores)
                         </a>
                         <a class="nav-link" href="<?= Url::toRoute('feedback/index') ?>">
-                            <div class="sb-nav-link-icon"><i class="fas fa-comment-dots"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Feedback
                         </a>
                         <?php } ?>

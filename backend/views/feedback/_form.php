@@ -1,5 +1,6 @@
 <?php
 
+use app\models\FeedbackCategoria;
 use app\models\User;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -22,12 +23,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'texto')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'tipo')->dropDownList(['Sugestão de Receita', 'Melhoria na App', 'Sugestões', 'Produto em falta (código de barras)', 'Feedback Geral', 'Outro'], ['className' => 'form-control','prompt' => ' -- Selecionar Tipo --']) ?>
+    <?= $form->field($model, 'tipo')
+        ->dropDownList(ArrayHelper::map(FeedbackCategoria::find()->asArray()->all(), 'id', 'categoria'),
+            ['prompt' => '-- Selecionar Tipo --'])
+        ->label('Tipo') ?>
 
     <?= $form->field($model, 'idutilizador')
         ->dropDownList(ArrayHelper::map(User::find()->asArray()->all(), 'id', 'username'),
             ['prompt' => ' -- Selecionar Utilizador --'])
         ->label('ID Utilizador') ?>
+
+    <?= $form->field($model, 'respond')->dropDownList(['0'=>'Nao Respondido', '1'=> 'Respondido'], ['className' => 'form-control','prompt' => ' -- Selecionar Estado --']) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

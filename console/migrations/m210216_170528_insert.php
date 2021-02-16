@@ -3,20 +3,20 @@
 use yii\db\Migration;
 
 /**
- * Class m210107_001209_insert
+ * Class m210216_170528_insert
  */
-class m210107_001209_insert extends Migration
+class m210216_170528_insert extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
-    {
-        /* Categorias User Data */
-        $this->insert('user', array('id' => '1', 'username' => 'admin', 'auth_key' => 'zgn2yMfmVi6LuYNcMZG3Zutkp4jLj7pt', 'password_hash' => '$2y$13$lzeM2aLd7h4.ev06D05t/.cZEFTyocagUlchxvE9a/1ymfrGAXtsS', 'password_reset_token' => 'NULL', 'email' => 'admin@foodman.com', 'status' => '10', 'created_at' => '1607902309', 'updated_at'=>'1607902309', 'verification_token'=>'fA_TINEEM1U_VRL-OcY04JXoMUJp71nQ_1607902309'));
+    { /* Categorias User Data */
+        $this->insert('user', array('id' => '1', 'username' => 'guest', 'auth_key' => 'zgn2yMfmVi6LuYNcMZG3Zutkp4jLj7pt', 'password_hash' => '$2y$13$lzeM2aLd7h4.ev06D05t/.cZEFTyocagUlchxvE9a/1ymfrGAXtsS', 'password_reset_token' => NULL, 'email' => 'guest@foodman.com', 'status' => '9', 'created_at' =>  strtotime("now"), 'updated_at'=>'1607902309', 'verification_token'=>'fA_TINEEM1U_VRL-OcY04JXoMUJp71nQ_1607902309'));
+        $this->insert('user', array('id' => '2', 'username' => 'admin', 'auth_key' => 'zgn2yMfmVi6LuYNcMZG3Zutkp4jLj7pt', 'password_hash' => '$2y$13$lzeM2aLd7h4.ev06D05t/.cZEFTyocagUlchxvE9a/1ymfrGAXtsS', 'password_reset_token' => NULL, 'email' => 'admin@foodman.com', 'status' => '10', 'created_at' => strtotime("now"), 'updated_at'=>'1607902309', 'verification_token'=>'fA_TINEEM1U_VRL-OcY04JXoMUJp71nQ_1607902309'));
         //$this->insert('user', array('id' => '', 'username' => '', 'auth_key' => '', 'password_hash' => '', 'password_reset_token' => '', 'email' => '', 'status' => '', 'created_at' => '', 'updated_at'=>'', 'verification_token'=>''));
 
-        $this->insert('auth_assignment', array('item_name' => 'admin', 'user_id' => '1', 'created_at' => Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))));
+        $this->insert('auth_assignment', array('item_name' => 'admin', 'user_id' => '2', 'created_at' => strtotime("now")));
 
         /* Categorias Insert Data */
         $this->insert('categorias', array('idcategoria' => '1', 'nome' => 'Vegetais'));
@@ -71,6 +71,7 @@ class m210107_001209_insert extends Migration
         <p>Por fim junte o sumo dos limões e tempere com sal e pimenta. Sirva de imediato com salsa picada por cima.</p>
         <p>Fonte: <a href="https://www.aldi.pt/receitas/Outra-Vez-Arroz/Sopa-de-Frango-Limao-e-Arroz.html">https://www.aldi.pt/receitas/Outra-Vez-Arroz/Sopa-de-Frango-Limao-e-Arroz.html</a></p>', 'idutilizador' => '1'));
 
+        /* Ingredientes */
         //$this->insert('ingredientes', array('idingrediente' => '', 'nome' => '', 'quantnecessaria' => '', 'tipopreparacao' => '', 'idproduto' => '', 'idreceita' => ''));
         $this->insert('ingredientes', array('idingrediente' => '1', 'nome' => 'Arroz Integral', 'quantnecessaria' => '400', 'tipopreparacao' => '0', 'idproduto' => '9', 'idreceita' => '1'));
         $this->insert('ingredientes', array('idingrediente' => '2', 'nome' => 'Leite de Coco', 'quantnecessaria' => '400', 'tipopreparacao' => '0', 'idproduto' => '10', 'idreceita' => '1'));
@@ -95,6 +96,14 @@ class m210107_001209_insert extends Migration
         $this->insert('ingredientes', array('idingrediente' => '21', 'nome' => 'Sal q.b.', 'quantnecessaria' => '0', 'tipopreparacao' => '0', 'idproduto' => '4', 'idreceita' => '2'));
         $this->insert('ingredientes', array('idingrediente' => '22', 'nome' => 'Pimenta q.b.', 'quantnecessaria' => '0', 'tipopreparacao' => '0', 'idproduto' => '25', 'idreceita' => '2'));
         $this->insert('ingredientes', array('idingrediente' => '23', 'nome' => 'Salsa q.b.', 'quantnecessaria' => '0', 'tipopreparacao' => '0', 'idproduto' => '26', 'idreceita' => '2'));
+
+        /* Feedback Categorias */
+        $this->insert('feedback_categoria', array('id' => '1', 'categoria' => 'Sugestão de Receita'));
+        $this->insert('feedback_categoria', array('id' => '2', 'categoria' => 'Melhoria na App'));
+        $this->insert('feedback_categoria', array('id' => '3', 'categoria' => 'Sugestões'));
+        $this->insert('feedback_categoria', array('id' => '4', 'categoria' => 'Produto em falta (código de barras)'));
+        $this->insert('feedback_categoria', array('id' => '5', 'categoria' => 'Feedback Geral'));
+        $this->insert('feedback_categoria', array('id' => '6', 'categoria' => 'Outro'));
     }
 
     /**
@@ -102,7 +111,7 @@ class m210107_001209_insert extends Migration
      */
     public function safeDown()
     {
-        echo "m210107_001209_insert cannot be reverted.\n";
+        echo "m210216_164318_insert_ cannot be reverted.\n";
 
         return false;
     }
@@ -116,7 +125,7 @@ class m210107_001209_insert extends Migration
 
     public function down()
     {
-        echo "m210107_001209_insert cannot be reverted.\n";
+        echo "m210216_170528_insert cannot be reverted.\n";
 
         return false;
     }

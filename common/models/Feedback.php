@@ -13,6 +13,7 @@ use Yii;
  * @property string $email
  * @property string $texto
  * @property int $tipo
+ * @property int $created_at
  * @property int $idutilizador
  *
  * @property User $idutilizador0
@@ -33,9 +34,9 @@ class Feedback extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'subjet', 'email', 'texto', 'tipo', 'idutilizador'], 'required'],
+            [['nome', 'subjet', 'email', 'texto', 'tipo', 'created_at', 'idutilizador'], 'required'],
             [['texto'], 'string'],
-            [['tipo', 'idutilizador'], 'integer'],
+            [['tipo', 'created_at', 'idutilizador'], 'integer'],
             [['nome', 'subjet', 'email'], 'string', 'max' => 255],
             [['idutilizador'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idutilizador' => 'id']],
         ];
@@ -53,6 +54,7 @@ class Feedback extends \yii\db\ActiveRecord
             'email' => 'Email',
             'texto' => 'Texto',
             'tipo' => 'Tipo',
+            'created_at' => 'Created At',
             'idutilizador' => 'Idutilizador',
         ];
     }

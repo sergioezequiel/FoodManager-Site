@@ -16,7 +16,8 @@ class FeedbackForm extends Model
     public $assunto;
     public $email;
     public $texto;
-    public $idutilizador = 1;
+    public $created_at;
+    public $idutilizador;
 
     /**
      * {@inheritdoc}
@@ -52,6 +53,7 @@ class FeedbackForm extends Model
         $feedback->subjet =  $this->subjet;
         $feedback->email = $this->email;
         $feedback->texto = $this->texto;
+        $feedback->created_at = $this->created_at;
         $feedback->idutilizador = $this->idutilizador;
 
         return $feedback->save();

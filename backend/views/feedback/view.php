@@ -49,8 +49,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'nometipo'
             ],
             [
+                'label' => 'Texto',
+                'attribute' => 'texto'
+            ],
+            [
                 'label' => 'ID Utilizador',
                 'attribute' => 'idutilizador'
+            ],
+            [
+                'label' => 'Criado',
+                'attribute' => 'timeform'
             ],
             [
                 'label' => 'Utilizador',

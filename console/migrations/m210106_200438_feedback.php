@@ -25,6 +25,8 @@ class m210106_200438_feedback extends Migration
             'email' => $this->string()->notNull(),
             'texto' => $this->text()->notNull(),
             'tipo' => $this->integer()->notNull(),
+            'respond' => $this->integer()->defaultValue(0),
+            'created_at' => $this->integer()->notNull(),
             'idutilizador' => $this->integer()->notNull()
         ], $tableOptions);
     }

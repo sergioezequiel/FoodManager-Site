@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m210106_201437_s_fk
+ * Class m210216_170409_fk
  */
-class m210106_233205_fk extends Migration
+class m210216_170409_fk extends Migration
 {
     /**
      * {@inheritdoc}
@@ -60,7 +60,7 @@ class m210106_233205_fk extends Migration
         /* Categorias Codigos Barras FK */
         $this->dropForeignKey('fk_CodigosBarras_Subcategorias_idx','{{%codigosbarras}}');
 
-       // return false;
+        // return false;
     }
 
     /*
@@ -72,7 +72,7 @@ class m210106_233205_fk extends Migration
 
     public function down()
     {
-        echo "m210106_201437_s_fk cannot be reverted.\n";
+        echo "m210216_170409_fk cannot be reverted.\n";
 
         return false;
     }

@@ -2,20 +2,19 @@
 
 namespace backend\controllers;
 
-use app\models\Feedback;
-use app\models\FeedbackCategoria;
-use app\models\FeedbackSearch;
 use common\models\User;
 use Yii;
+use app\models\FeedbackCategoria;
+use app\models\FeedbackCategoriaSearch;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
- * FeedbackController implements the CRUD actions for Feedback model.
+ * FeedbackcategoriaController implements the CRUD actions for FeedbackCategoria model.
  */
-class FeedbackController extends Controller
+class FeedbackcategoriaController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -28,7 +27,7 @@ class FeedbackController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'delete', 'create', 'update', 'view'],
+                        'actions' => ['index','delete','create','update','view'],
                         'roles' => ['gestor', 'admin']
                     ],
                 ]
@@ -50,7 +49,7 @@ class FeedbackController extends Controller
             return parent::beforeAction($action);
         }
 
-        if (!Yii::$app->user->isGuest) {
+        if(!Yii::$app->user->isGuest) {
             $user = User::find()->where(['id' => Yii::$app->user->getId()])->one();
             $this->view->params['username'] = $user->username;
         }
@@ -59,12 +58,12 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Lists all Feedback models.
+     * Lists all FeedbackCategoria models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new FeedbackSearch();
+        $searchModel = new FeedbackCategoriaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -74,7 +73,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Displays a single Feedback model.
+     * Displays a single FeedbackCategoria model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -87,16 +86,16 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Creates a new Feedback model.
+     * Creates a new FeedbackCategoria model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Feedback();
-        $model->created_at = strtotime("now");
+        $model = new FeedbackCategoria();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idfeedback]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -105,7 +104,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Updates an existing Feedback model.
+     * Updates an existing FeedbackCategoria model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -116,7 +115,7 @@ class FeedbackController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idfeedback]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -125,7 +124,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Deletes an existing Feedback model.
+     * Deletes an existing FeedbackCategoria model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -139,15 +138,15 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Finds the Feedback model based on its primary key value.
+     * Finds the FeedbackCategoria model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Feedback the loaded model
+     * @return FeedbackCategoria the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Feedback::findOne($id)) !== null) {
+        if (($model = FeedbackCategoria::findOne($id)) !== null) {
             return $model;
         }
 

@@ -43,7 +43,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Duração da Preparação',
                 'attribute' => 'duracaopreparacaomin'
             ],
-            'passos:ntext',
+            [
+                'label' => 'Passos',
+                'format' => 'html',
+                'attribute' => 'passos'
+            ],
             [
                 'label' => 'ID Utilizador',
                 'attribute' => 'idutilizador'
