@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use common\models\User;
 use Yii;
 
 /**
@@ -15,6 +14,8 @@ use Yii;
  * @property string $texto
  * @property int $tipo
  * @property int $idutilizador
+ * @property int $estado
+ * @property string $datacriacao
  *
  * @property User $idutilizador0
  */
@@ -34,9 +35,10 @@ class Feedback extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'subjet', 'email', 'texto', 'tipo', 'idutilizador'], 'required'],
+            [['nome', 'subjet', 'email', 'texto', 'tipo', 'idutilizador', 'estado'], 'required'],
             [['texto'], 'string'],
-            [['tipo', 'idutilizador'], 'integer'],
+            [['tipo', 'idutilizador', 'estado'], 'integer'],
+            [['datacriacao'], 'safe'],
             [['nome', 'subjet', 'email'], 'string', 'max' => 255],
             [['idutilizador'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idutilizador' => 'id']],
         ];
@@ -55,6 +57,8 @@ class Feedback extends \yii\db\ActiveRecord
             'texto' => 'Texto',
             'tipo' => 'Tipo',
             'idutilizador' => 'Idutilizador',
+            'estado' => 'Estado',
+            'datacriacao' => 'Datacriacao',
         ];
     }
 
@@ -67,7 +71,6 @@ class Feedback extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'idutilizador']);
     }
-
     public function getUsernameFeedback() {
         return $this->idutilizador0->username;
     }

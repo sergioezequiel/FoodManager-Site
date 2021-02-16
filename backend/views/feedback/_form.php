@@ -29,6 +29,8 @@ use yii\widgets\ActiveForm;
             ['prompt' => ' -- Selecionar Utilizador --'])
         ->label('ID Utilizador') ?>
 
+    <?= $form->field($model, 'estado')->dropDownList(['0' =>'Não respondido', '1' =>'Respondido']) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

@@ -40,6 +40,23 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Utilizador',
                 'attribute' => 'usernamefeedback'
             ],
+            [
+                'label' => 'Estado da Resposta',
+                'attribute' => 'estado',
+                'value' => function ($model) {
+                    if($model->estado == 0) {
+                        return 'Não respondido';
+                    }
+                    elseif($model->estado == 1) {
+                        return 'Respondido';
+                    }
+                    return 'Erro inesperado';
+                }
+            ],
+            [
+                'label' => 'Data da criação',
+                'attribute' => 'datacriacao',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
