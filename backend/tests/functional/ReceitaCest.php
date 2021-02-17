@@ -35,7 +35,7 @@ class ReceitaCest
         $I->fillField('#receita-duracaopreparacao', '80');
         $I->fillField('#receita-duracaoreceita', '60');
         $I->fillField('#receita-passos', 'Passos para uma receita para se comer um bom bolo ');
-        $I->selectOption('#receita-idutilizador', '1');
+        $I->selectOption('#receita-idutilizador', '2');
         $I->click('Save');
         $I->cantSee('Nome cannot be blank.', '.help-block');
         $I->cantSee('Duracaoreceita cannot be blank.', '.help-block');

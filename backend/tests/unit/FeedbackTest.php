@@ -39,7 +39,7 @@ class FeedbackTest extends Unit
         $feedback->texto = 'This é um teste ao feedback';
         $feedback->respond = 0;
         $feedback->created_at = strtotime('now');
-        $feedback->idutilizador = 1;
+        $feedback->idutilizador = 2;
         return $feedback;
     }
 
