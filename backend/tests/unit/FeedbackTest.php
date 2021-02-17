@@ -22,15 +22,8 @@ class FeedbackTest extends Unit
         ];
     }
 
-    protected function _before()
-    {
-        $user = UserTest::addUser();
-        $user->save();
-    }
-
     protected function _after()
     {
-        User::deleteAll();
         Feedback::deleteAll();
     }
 
@@ -44,8 +37,9 @@ class FeedbackTest extends Unit
         $feedback->subjet = "Um subjest";
         $feedback->tipo = 0;
         $feedback->texto = 'This é um teste ao feedback';
-        $feedback->tipo = 0;
-        $feedback->idutilizador = 99;
+        $feedback->respond = 0;
+        $feedback->created_at = strtotime('now');
+        $feedback->idutilizador = 1;
         return $feedback;
     }
 
@@ -73,6 +67,22 @@ class FeedbackTest extends Unit
         $this->tester->seeRecord(Feedback::class, ['idfeedback' => 99]);
         $feedback->delete();
         $this->tester->dontSeeRecord(Feedback::class, ['idfeedback' => 99]);
+    }
+
+    public function testErroFeedback(){
+        $feedback = new Feedback();
+        $feedback->idfeedback = 99;
+        $feedback->nome = "Um nome";
+        $feedback->email = 0;
+        $feedback->subjet = "Um subjest";
+        $feedback->tipo = 0;
+        $feedback->texto = 'This é um teste ao feedback';
+        $feedback->respond = 0;
+        $feedback->created_at = strtotime('now');
+        $feedback->idutilizador = 99;
+
+        $this->assertFalse($feedback->save());
+        $this->tester->cantseeRecord(Feedback::class, ['idfeedback' => 99]);
     }
 
 }
