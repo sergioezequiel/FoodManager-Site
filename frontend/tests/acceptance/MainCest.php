@@ -80,7 +80,6 @@ class MainCest
         $I->wait(2);
         $I->fillField('#send input[name="FeedbackForm[nome]"]', 'Sou Nome');
         $I->selectOption('#feedbackform-tipo', '2');
-
         $I->fillField('#send input[name="FeedbackForm[subjet]"]', 'Lorem ipsum');
         $I->fillField('#send input[name="FeedbackForm[email]"]', 'algum@gmail.com');
         $I->fillField('#send textarea[name="FeedbackForm[texto]"]', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.');

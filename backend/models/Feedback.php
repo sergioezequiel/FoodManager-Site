@@ -3,6 +3,7 @@
 namespace app\models;
 
 use common\models\User;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "feedback".
@@ -19,7 +20,7 @@ use common\models\User;
  *
  * @property User $idutilizador0
  */
-class Feedback extends \yii\db\ActiveRecord
+class Feedback extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -37,6 +38,7 @@ class Feedback extends \yii\db\ActiveRecord
         return [
             [['nome', 'subjet', 'email', 'texto', 'tipo', 'created_at', 'idutilizador'], 'required'],
             [['texto'], 'string'],
+            [['respond'], 'integer' , 'max' => 1, 'min' =>0],
             [['tipo', 'respond', 'created_at', 'idutilizador'], 'integer'],
             [['nome', 'subjet', 'email'], 'string', 'max' => 255],
             [['idutilizador'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idutilizador' => 'id']],
